@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Shopping list</title>
+		<style>
+			body, html {
+				margin: 0;
+				padding: 0;
+				border: 0;
+			}
+			header {
+				background-color: #C0C0C0;
+				padding: 16px;
+				padding-left: 48px;
+				margin-bottom: 48px;
+			}
+			main {
+				padding-left: 20%;
+				padding-right: 20%;
+			}
+			#getter {
+				margin-bottom: 48px;
+			}
+			#inserter {
+				margin-top: 48px;
+			}
+			table, th, td {
+				border: 1px solid black;
+			}
+			td {
+				padding: 8px;
+			}
+			input {
+				padding: 2px;
+				margin: 4px;
+			}
+		</style>
+	</head>
+	<body>
+		<header>
+			Shopping list {% if name %} {{name}} {% endif %}
+		</header>
+		<main>
+			<div id="getter">
+				<form method="GET">
+					<label for="getter_name">Get list by username:</label>
+					<input id="getter_name" type="text" name="name"/>
+					<br/>
+					<input id="getter_submit" type="submit" name="submit" value="Get shopping list"/>
+				</form>
+			</div>
+			{% if shopping_list %}
+				<div>
+					<h3>List:</h3>
+					<table>
+						{% for element in shopping_list %}
+							<tr>
+								<td>{{element.name}}</td>
+								<td>{{element.obj}}</td>
+								<td>{{element.quantity}}</td>
+							</tr>
+						{% endfor %}
+					</table>
+				</div>
+			{% endif %}
+			<div id="inserter">
+				<form method="POST">
+					<label for="inserter_name">Name:</label>
+					<input id="inserter_name" type="text" name="name" {% if name %}value="{{name}}"{% endif %}/>
+					<br/>
+					<label for="inserter_object">Object:</label>
+					<input id="inserter_object" type="text" name="object"/>
+					<br/>
+					<label for="inserter_quantity">Quantity:</label>
+					<input id="inserter_quantity" type="text" name="quantity"/>
+					<br/>
+					<input id="inserter_submit" type="submit" name="submit" value="Save"/>
+				</form>
+			</div>
+		</main>
+	</body>
+</html>
