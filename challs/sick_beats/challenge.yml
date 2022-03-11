@@ -1,0 +1,19 @@
+name: "Sick Beats"
+author: "SnackOverflow"
+category: "Misc"
+
+description: |
+  My friend who is a DJ sent me his recent project preview. Check out these sick beats!
+value: 100
+type: "standard"
+
+files:
+  - "chall/sick_beats.wav"
+flags:
+  - "dctf{H0w_7h3_tUrn74bl3S}"
+tags:
+  - "misc"
+  - "stego"
+
+state: "visible"
+version: "0.1"
