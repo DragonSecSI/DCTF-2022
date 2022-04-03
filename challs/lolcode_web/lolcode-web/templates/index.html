@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>LOL</title>
+  </style>
+  <script type="text/javascript">
+    async function submit() {
+
+      let lolcode = document.getElementById("user-input").value;
+      const postData = {
+        "lol-code": lolcode
+      }
+      
+      console.log(postData);
+
+      const response = await fetch(`/post`, {
+        method: "POST",
+        headers: {'Content-Type': 'application/json'}, 
+        body: JSON.stringify(postData),
+      });
+
+      if(!response.ok) {
+        console.log("nok");
+        console.log(response);
+      }
+
+      const data = await response.text();
+      document.getElementById("response").innerHTML = data;
+    }
+  </script>
+</head>
+<body>
+  <h2>Can i has flag?</h2>
+  <p> Our web developer spends on social networks way too much time. One day, he was playing with some new programming languages that are better for production enviroment than python. One day, he forgot some hidden credentials on a server (in a plaintext file), can you recover it? </p>
+  <p>btw he might be from future ;)</p>
+  <p> This url was logged in his browser history: <a href="https://github.com/justinmeza/lolcode-spec/blob/master/v1.2/lolcode-spec-v1.2.md">:) lol</a></p>
+  <input id="user-input"></input>
+  <button onclick="submit()">Get info</button>
+  <p id="response"> </p>
+</body>
+</html>
