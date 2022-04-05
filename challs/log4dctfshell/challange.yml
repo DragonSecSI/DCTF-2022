@@ -1,0 +1,19 @@
+name: "Log4DCTFshell"
+author: "DragonSecSI"
+category: "Web"
+
+description: |
+  Can you get a reverse shell?
+value: 100
+type: "standard"
+
+files:
+flags:
+  - "DCTF{gr3@t_l0g_4_fl4g}"
+tags:
+  - "web"
+
+state: "visible"
+version: "1.0"
+
+ops:
