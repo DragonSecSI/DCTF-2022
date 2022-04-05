@@ -1,0 +1,21 @@
+name: "Seek"
+author: "TheLuka"
+category: "Rev"
+
+description: 
+value: 100
+type: "standard"
+
+files:
+- "seek.c"
+- "flag.txt"
+flags:
+- "dctf{found}"
+- "dctf{FOUND}"
+- "DCTF{found}"
+- "DCTF{FOUND}"
+tags:
+- "rev"
+
+state: "visible"
+version: "0.1"
