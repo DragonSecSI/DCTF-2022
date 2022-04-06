@@ -1,0 +1,19 @@
+name: "Where is my flag?"
+author: "spanskiduh"
+category: "PWN"
+
+description: |
+  Somebody forgot to call function that prints importatnt data.
+  Can you call it?
+value: 200
+type: "standard"
+
+files:
+  - "where_is_my_flag/where_is_my_flag"
+flags:
+  - "dctf{h3h3_I_w@s_A1w@ys_th3r3}"
+tags:
+  - "pwn"
+
+state: "visible"
+version: "0.1"
