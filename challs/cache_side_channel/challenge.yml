@@ -1,0 +1,27 @@
+name: "Your friend's new crypto."
+author: "jerdnA"
+category: "PWN"
+
+description: |
+  Your friend recently got into theoretic cryptography and has been going on and
+  on about security games and proofs. They even rolled their own crypto and
+  thought they were smart by using libsodium as a foundation. Now, they are
+  taunting you, claiming their cipher is secure against key recovery attacks:
+  "You see, I managed to rigorously prove ..." blah, blah, blah.
+
+  You really ought to remind this person that at the end of the day, they live
+  in the real world and their crypto on real silicon.
+value: 100
+type: "standard"
+
+files:
+  - "chall/app"
+flags:
+  - "dctf{Sharing_is_caring_XOXO_NSA}"
+tags:
+  - "pwn"
+
+state: "visible"
+version: "0.1"
+
+ops:
