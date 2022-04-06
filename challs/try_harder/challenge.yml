@@ -1,0 +1,19 @@
+name: "Try harder!"
+author: "spanskiduh"
+category: "PWN"
+
+description: |
+  You now have a picture of how stack works.
+  Can you recover the flag?
+value: 300 
+type: "standard"
+
+files:
+  - "chall/app"
+flags:
+  - "dctf{p@r@ms_g3t_m3_c0nfus3d}"
+tags:
+  - "pwn"
+
+state: "visible"
+version: "0.1"
