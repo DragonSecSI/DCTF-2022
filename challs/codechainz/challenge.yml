@@ -1,0 +1,18 @@
+name: "Codechainz"
+author: "AlwaysGuilty"
+category: "PWN"
+
+description: |
+  This is Codechain's older brother, Codechainz
+value: 400
+type: "standard"
+
+files:
+  - "chall/app"
+flags:
+  - "dctf{5h3_s31l5_s3e_5h3ll5_0n_7h3e_534_shur3_2nvc4t4204}"
+tags:
+  - "pwn"
+
+state: "visible"
+version: "0.1"
