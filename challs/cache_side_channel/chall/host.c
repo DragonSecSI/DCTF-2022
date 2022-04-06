@@ -15,7 +15,7 @@ int main() {
     FILE *file;
 	char flag[33];
 	file = fopen("flag.txt", "r");
-	fgets(flag, 32, file);
+	fgets(flag, 33, file);
 	fclose(file);
 
     // Initialize the sodium crypto library.
