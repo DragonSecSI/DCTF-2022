@@ -1,0 +1,1 @@
+flag = "dctf{fermat_warned_me_about_this}"
