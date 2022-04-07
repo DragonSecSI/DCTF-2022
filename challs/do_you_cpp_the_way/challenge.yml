@@ -1,0 +1,20 @@
+name: "Do you C++ the way?"
+author: "AlwaysGuilty"
+category: "Rev"
+
+description: |
+  Time it right, play it straight,
+  don't look back don't hesitate,
+  when you go C time.
+value: 200
+type: "standard"
+
+files:
+  - "chall/app"
+flags:
+  - "dctf{Ch0Os3_7h3_r1gh7_m0m3nt_84vnb0}"
+tags:
+  - "rev"
+
+state: "visible"
+version: "0.1"
