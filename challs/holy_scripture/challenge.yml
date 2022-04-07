@@ -1,0 +1,20 @@
+name: "Holy Scripture"
+author: "SnackOverflow"
+category: "Crypto"
+
+description: |
+  The text in question is said to be one of the Holy Scriptures. Can you reveal its secrets?
+value: 100
+type: "standard"
+
+files:
+  - "chall/ciphertext.txt"
+flags:
+  - "dctf{fr3qu3NcY_4nAlY51s_0r_pUr3_gU3s5W0rK}"
+tags:
+  - "crypto"
+
+state: "visible"
+version: "0.1"
+
+ops:
