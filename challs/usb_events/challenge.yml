@@ -1,0 +1,20 @@
+name: "Unauhtorized access"
+author: "Pixel"
+category: "Forensics"
+
+description: |
+  There is a common policy to keep a log of all USB events in our company. We also have a list of all authorized USB devices present. One of the computers got a file stolen while the employee wasn't looking, can you identify the USB device that was used? After you get it decrypt it.
+  Flag is not in format, so you have to input what you get into dctf{input_here}.
+value: 100
+type: "standard"
+
+files:
+  - "chall/Files.zip"
+flags:
+  - "dctf{dragons}"
+tags:
+  - "forensics"
+  - "scripting"
+
+state: "visible"
+version: "1.0"
