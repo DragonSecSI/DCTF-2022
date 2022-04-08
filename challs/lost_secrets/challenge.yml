@@ -1,0 +1,20 @@
+name: "Lost Secrets"
+author: "Pixel"
+category: "Misc"
+
+description: |
+  One your coleagues was working on a super secret file. Just before finishing and saving it his computer crashed. since he was patient enough to wait until windows collected the data in BSOD he got a dump file. Can you recover the secret file fromt the dump?
+  TODO: link to dump file
+value: 100
+type: "standard"
+
+files:
+flags:
+  - "dctf{n0t_th4t_s3cr3t_1s_1t}"
+tags:
+  - "forensics"
+  - "windows"
+  - "misc"
+
+state: "visible"
+version: "1.0"
