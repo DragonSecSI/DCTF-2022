@@ -1,0 +1,18 @@
+name: "Where the Path Leads"
+author: "Pixel"
+category: "Web"
+
+description: |
+  You are provided a webpage. There is something weird about how the webpage serves the pages. Can you exploit it?
+value: 100
+type: "standard"
+
+files:
+  - "chall/src.zip"
+flags:
+  - "dctf{h0w_d1d_y0u_g3t_h3r3}"
+tags:
+  - "web"
+
+state: "visible"
+version: "1.0"
