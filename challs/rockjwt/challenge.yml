@@ -1,0 +1,18 @@
+name: "RockJWT"
+author: "Pixel"
+category: "Web"
+
+description: |
+  We found an API that for some reason only returns a token when you send a request, it doesn't let us get anything else. Can you figure out how to get access to other resources?
+value: 200
+type: "standard"
+
+files:
+  - "chall/src.zip"
+flags:
+  - "dctf{r0cky0u_f0r_7h3_w1n}"
+tags:
+  - "web"
+
+state: "visible"
+version: "1.0"
