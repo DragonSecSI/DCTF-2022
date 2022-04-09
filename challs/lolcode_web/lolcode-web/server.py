@@ -11,11 +11,11 @@ def index():
 def process():
     request_data = request.get_json()
     lol_code= request_data['lol-code']
-    lol_file = open("h.lol", "w")
+    lol_file = open("/tmp/h.lol", "w")
     lol_file.write(lol_code)
     lol_file.close()
 
-    process = subprocess.Popen(['./lci', 'h.lol'],
+    process = subprocess.Popen(['./lci', '/tmp/h.lol'],
                                 stdout=subprocess.PIPE,
                                 stderr=subprocess.PIPE)
     stdout, stderr = process.communicate()

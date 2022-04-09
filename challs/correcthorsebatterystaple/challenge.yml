@@ -8,7 +8,6 @@ value: 300
 type: "standard"
 
 files:
-  - "chall/correcthorsebatterystaple.py"
 flags:
   - "DCTF{RelativeDistanceCoolEncoding}"
 tags:

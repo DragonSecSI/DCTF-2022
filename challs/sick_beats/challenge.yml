@@ -3,12 +3,11 @@ author: "SnackOverflow"
 category: "Misc"
 
 description: |
-  My friend who is a DJ sent me his recent project preview. Check out these sick beats!
+  My friend who is a DJ sent me his recent project preview. [Check out these sick beats!](https://dctf.b-cdn.net/sick_beats.wav)
 value: 100
 type: "standard"
 
 files:
-  - "chall/sick_beats.wav"
 flags:
   - "dctf{H0w_7h3_tUrn74bl3S}"
 tags:

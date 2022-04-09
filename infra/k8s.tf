@@ -69,10 +69,10 @@ resource "kubernetes_secret" "dctf-wildcard" {
   type = "kubernetes.io/tls"
 }
 
-resource "kubernetes_secret" "pwn_registry_secret" {
+resource "kubernetes_secret" "registry_secret" {
   metadata {
     name = "registry-secret"
-    namespace = var.azure_k8s_pwn_namespace
+    namespace = var.azure_k8s_namespace
   }
 
   data = {

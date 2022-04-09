@@ -9,7 +9,7 @@ app = Flask(__name__)
 @app.route("/license_check")
 def licenseCheck():
 
-    con = sqlite3.connect("ctf.db")
+    con = sqlite3.connect("file:ctf.db?mode=ro")
     cur = con.cursor()
     try:
         lice = request.args.get("license_key")

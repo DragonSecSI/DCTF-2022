@@ -29,6 +29,7 @@ certificate_registration_email = "andraz.juvan@dragonsec.si"
 # DCTF SI configuration
 
 dctfsi_postgres_name = "dctfsi"
+dctfsi_challs_enabled = false
 
 dctfsi_postgres_user     = "dctf"
 dctfsi_postgres_password = ""

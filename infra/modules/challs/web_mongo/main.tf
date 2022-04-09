@@ -1,6 +1,39 @@
+resource "kubernetes_ingress" "ingress" {
+  metadata {
+    name = "web-${var.name}-ingress"
+    namespace = var.k8s_namespace
+
+    annotations = {
+      "kubernetes.io/ingress.class" = "nginx"
+    }
+  }
+
+  spec {
+    rule {
+      host = "${var.hostname}"
+      http {
+        path {
+          backend {
+            service_name = kubernetes_service.service.metadata.0.name
+            service_port = 8000
+          }
+
+          path = "/"
+        }
+      }
+    }
+
+    tls {
+      secret_name = var.tls
+    }
+  }
+
+  wait_for_load_balancer = true
+}
+
 resource "kubernetes_service" "service" {
   metadata {
-    name = "pwn-${var.name}-service"
+    name = "web-${var.name}-service"
     namespace = var.k8s_namespace
   }
   spec {
@@ -9,18 +42,17 @@ resource "kubernetes_service" "service" {
     }
 
     port {
-      port        = var.port
-      target_port = 1337
+      port        = 8000
+      target_port = 8000
     }
 
-    type = "LoadBalancer"
-    load_balancer_ip = var.ip
+    type = "ClusterIP"
   }
 }
 
 resource "kubernetes_deployment" "deployment" {
   metadata {
-    name = "pwn-${var.name}-deployment"
+    name = "web-${var.name}-deployment"
     namespace = var.k8s_namespace
     labels = {
       app = "${var.name}"
@@ -57,6 +89,15 @@ resource "kubernetes_deployment" "deployment" {
                 "NET_BIND_SERVICE",
               ]
             }
+          }
+
+          env {
+            name = "DB"
+            value = kubernetes_service.mongo_service.metadata.0.name
+          }
+          env {
+            name = "DB_URI"
+            value = "mongodb://${kubernetes_service.mongo_service.metadata.0.name}:27017/chall"
           }
 
           resources {

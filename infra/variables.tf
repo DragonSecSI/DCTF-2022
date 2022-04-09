@@ -52,11 +52,12 @@ variable "azure_k8s_nodes_min_count" {}
 variable "azure_k8s_nodes_max_count" {}
 
 variable "azure_k8s_registry_secret" {}
-variable "azure_k8s_pwn_namespace" {}
+variable "azure_k8s_namespace" {}
 
 variable "certificate_registration_email" {}
 
 variable "dctfsi_postgres_name" {}
+variable "dctfsi_challs_enabled" {}
 variable "dctfsi_postgres_user" {}
 variable "dctfsi_postgres_password" {}
 variable "dctfsi_postgres_database" {}

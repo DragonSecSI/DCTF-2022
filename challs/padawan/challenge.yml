@@ -1,0 +1,18 @@
+name: "Padawan"
+author: "Zen"
+category: "Rev"
+
+description: |
+  Even Skywalker warmed up first.
+value: 100
+type: "standard"
+
+files:
+  - "chall/padawan"
+flags:
+  - "dctf{pr0uD_0F_y0u_yOuNg_Padovan}"
+tags:
+  - "pwn"
+
+state: "visible"
+version: "0.1"

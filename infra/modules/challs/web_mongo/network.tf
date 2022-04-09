@@ -1,6 +1,6 @@
 resource "kubernetes_network_policy" "app" {
   metadata {
-    name      = "pwn-${var.name}-network-policy"
+    name      = "web-${var.name}-network-policy"
     namespace = var.k8s_namespace
   }
 
@@ -8,6 +8,37 @@ resource "kubernetes_network_policy" "app" {
     pod_selector {
       match_labels = {
         app = "${var.name}"
+      }
+    }
+
+    egress {
+      to {
+        pod_selector {
+          match_labels = {
+            app = "${var.name}-mongo"
+          }
+        }
+      }
+      ports {
+        port     = 27017
+        protocol = "TCP"
+      }
+    }
+
+    policy_types = ["Egress"]
+  }
+}
+
+resource "kubernetes_network_policy" "mongo" {
+  metadata {
+    name      = "web-${var.name}-mongo-network-policy"
+    namespace = var.k8s_namespace
+  }
+
+  spec {
+    pod_selector {
+      match_labels = {
+        app = "${var.name}-mongo"
       }
     }
 

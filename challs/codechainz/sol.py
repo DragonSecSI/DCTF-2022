@@ -4,7 +4,7 @@ from pwn import remote, process, p64, log
 
 #p = process("./chall/app")
 #pid = gdb.attach(p, gdbscript="""""")
-p = remote("localhost", 1337)
+p = remote("51.124.222.205", 13373)
 
 p.recvuntil(b"at ")
 leak = int(p.recvuntil(b".")[:-1], 16)

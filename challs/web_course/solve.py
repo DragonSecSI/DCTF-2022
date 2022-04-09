@@ -8,8 +8,8 @@ import json
 #main function
 def main():
 
-    post_url = "http://localhost/users/login"
-    courses_url = "http://localhost/courses"
+    post_url = "https://web-course.dctf.si/users/login"
+    courses_url = "https://web-course.dctf.si/courses"
 
     payload={
         "name":"admin",

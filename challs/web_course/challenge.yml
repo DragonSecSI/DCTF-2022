@@ -8,7 +8,7 @@ value: 300
 type: "standard"
 
 files:
-  - "chall/src.zip"
+  - "source.zip"
 flags:
   - "dctf{th1s_W3b_Is_ki11iNg_MEE}"
 tags:

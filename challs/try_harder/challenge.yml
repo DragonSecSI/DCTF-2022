@@ -9,7 +9,7 @@ value: 300
 type: "standard"
 
 files:
-  - "chall/app"
+  - "try_harder/try_harder"
 flags:
   - "dctf{p@r@ms_g3t_m3_c0nfus3d}"
 tags:

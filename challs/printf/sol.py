@@ -1,7 +1,7 @@
 from pwn import *
 
 # set correct ip and port
-p = remote('127.0.0.1', 1337)
+p = remote('51.124.222.205', 13370)
 
 
 # leak starts at offset 12 and goes to 15
