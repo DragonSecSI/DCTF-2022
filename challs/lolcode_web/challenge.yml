@@ -1,6 +1,6 @@
 name: "LOL"
-author: "DragonSecSI"
-category: "Web"
+author: "spanskiduh"
+category: "Misc"
 
 description: |
   Can you read a file?
@@ -13,8 +13,7 @@ flags:
   - "DCTF{l0lc0De_c@n_R3@d_fil3s_t00}"
 tags:
   - "web"
+  - "misc"
 
 state: "visible"
 version: "1.0"
-
-ops:
