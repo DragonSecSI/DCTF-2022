@@ -2,7 +2,7 @@ module "ctfdsi" {
   source = "./modules/ctfd"
 
   name     = "ctfdsi"
-  revision = 1
+  revision = 0
 
   k8s_namespace  = "default"
   k8s_image      = "ajuvan/ctfd:latest"
@@ -33,7 +33,7 @@ module "ctfd" {
   source = "./modules/ctfd"
 
   name     = "ctfd"
-  revision = 1
+  revision = 0
 
   k8s_namespace  = "default"
   k8s_image      = "ajuvan/ctfd:latest"

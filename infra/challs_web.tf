@@ -17,12 +17,12 @@ module "chall_web_eulers_license" {
 }
 
 module "chall_web_path" {
-  source = "./modules/challs/web/"
+  source = "./modules/challs/web_raw/"
   count = var.dctfsi_challs_enabled ? 1 : 0
 
   name     = "path"
+  ip       = azurerm_public_ip.challs_web_path.ip_address
   hostname = "path.dctf.si"
-  tls      = kubernetes_secret.dctf-wildcard.metadata.0.name
 
   k8s_namespace       = "default"
   k8s_image           = "dctfsi.azurecr.io/challs/path:latest"

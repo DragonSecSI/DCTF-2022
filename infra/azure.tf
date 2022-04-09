@@ -32,6 +32,14 @@ resource "azurerm_public_ip" "challs_pwn" {
   sku                 = "Standard"
 }
 
+resource "azurerm_public_ip" "challs_web_path" {
+  name                = "challs_web_path_public_ip"
+  resource_group_name = "MC_${azurerm_resource_group.challs.name}_${azurerm_kubernetes_cluster.k8s.name}_${azurerm_resource_group.challs.location}"
+  location            = azurerm_resource_group.challs.location
+  allocation_method   = "Static"
+  sku                 = "Standard"
+}
+
 module "nginx-controller" {
   source  = "terraform-iaac/nginx-controller/helm"
   version = "2.0.1"
