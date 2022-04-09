@@ -1,6 +1,7 @@
 name: "correcthorsebatterystaple"
 author: "mirren"
 category: "Crypto"
+connection_info: "nc pwn.dctf.si 13374"
 
 description: |
   I found a cool encoding for my secret passwords! 

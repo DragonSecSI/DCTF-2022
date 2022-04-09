@@ -1,6 +1,7 @@
 name: "Where the Path Leads"
 author: "Pixel"
 category: "Web"
+connection_info: "https://path.dctf.si"
 
 description: |
   You are provided a webpage. There is something weird about how the webpage serves the pages. Can you exploit it?

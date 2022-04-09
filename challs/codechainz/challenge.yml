@@ -1,6 +1,7 @@
 name: "Codechainz"
 author: "AlwaysGuilty"
 category: "PWN"
+connection_info: "nc pwn.dctf.si 13373"
 
 description: |
   This is Codechain's older brother, Codechainz

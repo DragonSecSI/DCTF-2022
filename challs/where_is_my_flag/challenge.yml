@@ -1,6 +1,7 @@
 name: "Where is my flag?"
 author: "spanskiduh"
 category: "PWN"
+connection_info: "nc pwn.dctf.si 13371"
 
 description: |
   Somebody forgot to call function that prints importatnt data.

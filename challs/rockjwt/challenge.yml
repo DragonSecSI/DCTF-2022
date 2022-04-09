@@ -1,6 +1,7 @@
 name: "RockJWT"
 author: "Pixel"
 category: "Web"
+connection_info: "https://rockjwt.dctf.si"
 
 description: |
   We found an API that for some reason only returns a token when you send a request, it doesn't let us get anything else. Can you figure out how to get access to other resources?

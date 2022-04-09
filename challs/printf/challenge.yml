@@ -1,6 +1,7 @@
 name: "Printf"
 author: "VrumVrum"
 category: "PWN"
+connection_info: "nc pwn.dctf.si 13370"
 
 description: |
   Can you find the spot?

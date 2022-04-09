@@ -7,6 +7,7 @@ description: |
   TODO: link to dump file
 value: 100
 type: "standard"
+connection_info: "https://dctf.b-cdn.net/MEMORY.zip"
 
 files:
 flags:

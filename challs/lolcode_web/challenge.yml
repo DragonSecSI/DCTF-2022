@@ -1,6 +1,7 @@
 name: "LOL"
 author: "spanskiduh"
 category: "Misc"
+connection_info: "https://lolcode.dctf.si"
 
 description: |
   Can you read a file?

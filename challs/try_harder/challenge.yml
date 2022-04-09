@@ -1,6 +1,7 @@
 name: "Try harder!"
 author: "spanskiduh"
 category: "PWN"
+connection_info: "nc pwn.dctf.si 13372"
 
 description: |
   You now have a picture of how stack works.
