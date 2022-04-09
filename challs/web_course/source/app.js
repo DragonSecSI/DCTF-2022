@@ -12,7 +12,7 @@ var jwt = require("jsonwebtoken");
 const dotenv = require("dotenv");
 dotenv.config();
 
-port = process.env.PORT || 80;
+port = process.env.PORT || 8000;
 const app = express();
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "pug");

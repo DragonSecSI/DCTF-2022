@@ -8,8 +8,8 @@ import json
 #main function
 def main():
 
-    post_url = "http://localhost:31030/users/login"
-    courses_url = "http://localhost:31030/courses"
+    post_url = "http://localhost/users/login"
+    courses_url = "http://localhost/courses"
 
     payload={
         "name":"admin",
