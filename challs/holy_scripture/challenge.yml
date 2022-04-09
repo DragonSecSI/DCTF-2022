@@ -4,7 +4,7 @@ category: "Crypto"
 
 description: |
   The text in question is said to be one of the Holy Scriptures. Can you reveal its secrets?
-value: 100
+value: 200
 type: "standard"
 
 files:
@@ -16,5 +16,3 @@ tags:
 
 state: "visible"
 version: "0.1"
-
-ops:
