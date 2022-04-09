@@ -4,7 +4,6 @@ category: "Misc"
 
 description: |
   One your coleagues was working on a super secret file. Just before finishing and saving it his computer crashed. since he was patient enough to wait until windows collected the data in BSOD he got a dump file. Can you recover the secret file fromt the dump?
-  TODO: link to dump file
 value: 100
 type: "standard"
 connection_info: "https://dctf.b-cdn.net/MEMORY.zip"
