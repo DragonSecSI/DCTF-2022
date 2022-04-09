@@ -2,7 +2,8 @@ name: "WEB Dev Course"
 author: "TheLuka"
 category: "Web"
 
-description:
+description: |
+  mongo makes me go mongo
 value: 300
 type: "standard"
 
