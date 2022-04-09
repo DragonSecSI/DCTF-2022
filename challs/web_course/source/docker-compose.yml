@@ -1,0 +1,27 @@
+version: "3"
+
+services:
+  nodejs:
+    image: node
+    container_name: chall
+    restart: unless-stopped
+    ports:
+      - "31030:80"
+    volumes:
+      - .:/home/node/app
+    networks:
+      - challenge-network
+    working_dir: /home/node/app
+    command: ./wait-for.sh mongodb:27017 -- npm run dev
+
+  mongodb:
+    container_name: mongodb
+    image: mongo
+    volumes:
+      - ./data:/data/mongo
+    networks:
+      - challenge-network
+
+networks:
+  challenge-network:
+    driver: bridge

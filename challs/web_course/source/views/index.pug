@@ -1,0 +1,12 @@
+extends layout
+
+block variables
+  - var title = "Home"
+
+block content
+  h2.text-center Web Development Courses app
+  .row
+    .offset-sm-2.col-sm-8
+      .jumbotron.text-center.
+        Welcome to my Web Development Courses app, have fun with the courses. If you learn enough maybe you can view the hidden course.
+      a.btn.btn-success.btn-block(href='/courses') view courses    

@@ -1,0 +1,27 @@
+extends layout
+
+block content
+  div: form(method='POST', class='form-vertical', action='/users/register')
+    fieldset
+      legend: strong.text-info Register Area
+
+      if message
+        if message.error
+          div.alert.alert-danger #{message.error}
+        else
+          div.alert.alert-success #{message.success}
+
+      div.form-group
+        label Username
+        input.form-control(name='name', autofocus, placeholder='Username', required)
+
+      div.form-group
+        label Password
+        input.form-control(name='password', type='password', placeholder='Password', required)
+
+      div.form-group
+        label Email
+        input.form-control(name='email', type='email', placeholder='Email', required)
+
+      div.form-actions
+        input.btn.btn-primary.btn-block(type='submit', value='Register')

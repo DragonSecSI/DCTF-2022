@@ -1,0 +1,17 @@
+extends layout
+
+block content
+	.row
+		.offset-sm-2.col-sm-8
+			.jumbotron.text-center
+				h2.text-center Top Web Development Courses 
+					if courses
+						each course in courses
+							div.card.flex-md-row.mb-4.shadow-sm.h-md-250
+								div.card-body.d-flex.flex-column.align-items-start
+									strong.d-inline-block.mb-2.text-primary #{course.name}
+									div.mb-1.text-muted.small Owner: #{course.owner}
+									p.card-text.mb-auto #{course.content}
+									a.btn.btn-primary.btn-sm  Cost: #{course.cost}
+					else
+						div.alert.alert-danger No courses found!

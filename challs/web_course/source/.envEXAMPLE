@@ -1,0 +1,4 @@
+DB_URI=mongodb://mongodb/chall
+ADMIN_PASSWORD=passssww
+FLAG=flag
+SECRET_KEY=8bet5ub7f18t965c5gab18292fd96ed719448b35
