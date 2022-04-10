@@ -10,7 +10,7 @@ type: "standard"
 
 files:
 flags:
-  - "DCTF{RelativeDistanceCoolEncoding}"
+  - "dctf{RelativeDistanceCoolEncoding}"
 tags:
   - "crypto"
 
