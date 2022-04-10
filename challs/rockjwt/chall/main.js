@@ -37,21 +37,24 @@ app.get("/secret", function (req, res) {
     if(req.header('authorization')) {
         const tok = req.header('authorization').split(" ")[1];
         (async () => {
-            const { payload, protectedHeader } = await jose.jwtVerify(tok, Buffer.from(super_special_stuff, 'utf8'))
-            if (payload != null) {
-                if (payload.auth_level === "admin") {
-                    try {
-                        const data = fs.readFileSync('flag.txt', 'utf8')
-                        return res.status(200).json(data.trim())
-                    } catch (err) {
-                        return res.status(500).json("Something went wrong.")
+            try {
+                const {payload, protectedHeader} = await jose.jwtVerify(tok, Buffer.from(super_special_stuff, 'utf8'))
+                if (payload != null) {
+                    if (payload.auth_level === "admin") {
+                        try {
+                            const data = fs.readFileSync('flag.txt', 'utf8')
+                            return res.status(200).json(data.trim())
+                        } catch (err) {
+                            return res.status(500).json("Something went wrong.")
+                        }
+                    } else {
+                        return res.status(400).json("Your auth_level is too low to access this resource.")
                     }
-                }
-                else {
+                } else {
                     return res.status(400).json("Your auth_level is too low to access this resource.")
                 }
-            } else {
-                return res.status(400).json("Your auth_level is too low to access this resource.")
+            } catch (e) {
+                return res.status(400).json("Something went wrong")
             }
         })();
     }
