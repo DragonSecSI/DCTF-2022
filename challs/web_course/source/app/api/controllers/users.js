@@ -29,7 +29,13 @@ module.exports = {
       function(err, userInfo) {
         if (err) {
           next(err);
-        } else {
+        } else if (userInfo == null) {
+					res.json({
+							status: "failure",
+							message: "User is null",
+							data: {},
+					});
+				} else {
           const token = jwt.sign(
             {
               id: userInfo._id,

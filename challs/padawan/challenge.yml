@@ -6,6 +6,7 @@ description: |
   Even Skywalker warmed up first.
 value: 100
 type: "standard"
+connection_info: "nc 51.124.222.205 13375"
 
 files:
   - "chall/padawan"
