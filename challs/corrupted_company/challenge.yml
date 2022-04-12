@@ -1,0 +1,22 @@
+name: "Corrupt company"
+author: "SnackOverflow"
+category: "Misc"
+
+description: |
+  A whistleblower from Best Company Ever inc. sent us this corrupt file that may be containing incriminating data.
+  Help him find the proof of company's evil plans!
+value: 100
+type: "standard"
+
+files:
+  - "chall/nothing.jpg"
+flags:
+  - "dctf{pl5_z1p_1t_w3_4r3_4_g00d_c0mp4ny}"
+tags:
+  - "misc"
+  - "forensics"
+
+state: "visible"
+version: "0.1"
+
+ops:
