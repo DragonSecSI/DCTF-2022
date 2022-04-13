@@ -1,0 +1,25 @@
+name: "MACdonalds 2"
+author: "jerdnA"
+category: "Crypto"
+
+description: |
+  One of the cooks in the kitchen was giving you a weird look ever since you 
+  walked in. He must be jealous of your sick Linux hoodie signed by the penguin
+  himself. Unbeknown to you, he decided to mess up your second order of CBC-MAC.
+  
+  The initialization vector is now random, and you can only generate tags for
+  messages that are one block long. Can you still create a forgery?
+value: 50
+type: "standard"
+connection_info: "nc pwn.dragonsec.si 13371"
+
+files:
+  - "chall/challenger.py"
+  - "chall/template.py"
+flags:
+  - "dctf{ECB_is_the_ice_cream_machine_of_crypto.}"
+tags:
+  - "crypto"
+
+state: "visible"
+version: "0.1"
