@@ -1,0 +1,1 @@
+flag = "dctf{M4k1ng_Sb0x3s_1s_t00_h4rd}"
