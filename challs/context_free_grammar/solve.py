@@ -1,4 +1,5 @@
 import itertools
+import os
 import string
 from random import shuffle, randint, sample, choice
 
@@ -318,11 +319,40 @@ def get_production(string_production, nonterminal=None, mappings=[]):
     else:
         return nonterminal, mappings
 
+def generate_folders(file, folder):
+    grammar = Grammar(file)
+    for s, ms in grammar.productions.items():
+        s_path = os.path.join(folder, s)
+        os.mkdir(s_path)
 
-grammar = Grammar("chall/cfg.txt")
+        for m in ms:
+            d_path = os.path.join(s_path, m)
+
+            if m in alphabet:
+                open(d_path + ".txt", "w").close()
+            else:
+                os.mkdir(d_path)
+
+def get_rules(path, outf):
+    with open(outf, "w") as f:
+        for dir in os.listdir(path):
+            line = dir + " -> " + "|".join([x.replace(".txt", "") for x in os.listdir(os.path.join(path, dir))]) + "\n"
+            f.write(line)
+
+file = "chall/cfg.txt"
+grammar = Grammar(file)
 #grammar.reduce_mappings()
 #grammar.add_useless_productions()
 #grammar.scramble_nonterminals()
-grammar.simplify()
+#grammar.simplify()
 #grammar.print_productions()
+#grammar.get_flag()
+#generate_folders(file, "test")
+get_rules("cfg", "test.txt")
+grammar = Grammar("test.txt")
+grammar.reduce_mappings()
+grammar.add_useless_productions()
+grammar.scramble_nonterminals()
+grammar.simplify()
+grammar.print_productions()
 grammar.get_flag()
