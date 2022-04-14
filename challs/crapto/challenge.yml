@@ -1,0 +1,20 @@
+name: "Crapto"
+author: "CraftByte"
+category: "Misc"
+
+description: |
+  I touched my keyfob for free bubblegum and they stole my flag :(
+value: 200
+type: "standard"
+
+files:
+  - "chall/keyfob.trace"
+flags:
+  - "dctf{wh4t_15_g00d_prng_51fb12a0}"
+tags:
+  - "rfid"
+
+state: "visible"
+version: "0.1"
+
+ops:

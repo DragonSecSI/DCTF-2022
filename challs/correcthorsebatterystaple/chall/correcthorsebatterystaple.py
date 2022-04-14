@@ -26,7 +26,7 @@ if __name__=="__main__":
     print("This is the encrypted password: " + encrypted + ". ")
     print("Can you decrypt it?")
     password=input("Enter password: ")
-    flag="dctf{RelativeDistanceCoolEncoding}"
+    flag="DCTF{RelativeDistanceCoolEncoding}"
     if password.strip()==word: 
        print("Congrats")
        print(flag)
