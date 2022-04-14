@@ -11,16 +11,16 @@ p=2**511 - 187
 e=EllipticCurve(GF(p), [A,1])
 keys=[]
 
-def generate_sig_strings(no_sigs): 
-    ''' provde some random challenge strings'''
-    sigs=[] 
-    with open('challenge_strings') as f: 
-        lines=f.readlines()
-        for _ in range no_sigs: 
-            sigs.append(random.choice(lines))
+def generate_sig_strings(nr): 
+    ret=[]
+    for i in range(nr-1): 
+        s=''
+        for _ in range(hashlen): 
+            s+=str(randint(0, 1) )
+        ret.append(s)
+    return ret
 
 def sign(bitstring): 
-    '''sign with Naor-Reingold'''
     result=0
     for i in range(hashlen): 
         if bitstring[i] == 1: 
@@ -32,6 +32,9 @@ def sign_strings(strings):
     for i in range(len(strings)): 
         sigs.append(sign(strings[i]))
     return sigs
+
+def gen_subset(): 
+    return choice(subset_sigs)
 
 def parse_keys(): 
     with open('keyfile') as f: 
@@ -47,6 +50,7 @@ if __name__=="__main__":
     # generate that many possible signatures 
     no_sigs=20
     generated=generate_sig_strings(no_sigs)
+    generated.append(gen_subset())
     for string in generated: 
         print(string)
 
@@ -57,6 +61,7 @@ if __name__=="__main__":
     gen_sigs=sign_strings(generated)
     shuffle(gen_sigs)
    
+    # get 5s to sign TODO may be changed
     try: 
         signal.alarm(19)
         sig=input("Signature: ").strip()

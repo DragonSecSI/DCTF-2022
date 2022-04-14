@@ -7,11 +7,13 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     apt-get -y install socat coreutils
 
 COPY chall/flag.txt /
-COPY chall/algebraic.py /
+COPY chall/server.py /
 COPY chall/keyfile /
+COPY chall/constants.py /
 
-RUN chmod 555 /algebraic.py && \
+RUN chmod 555 /server.py && \
     chmod 444 /flag.txt && \
+    chmod 444 /constants.py && \
     chmod 444 /keyfile 
 
 CMD socat -T 30 \
