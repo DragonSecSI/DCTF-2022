@@ -48,12 +48,12 @@ public class Art {
      * @throws Exception
      */
     public void printTextArt(String artText, int textHeight, ASCIIArtFont fontType, String artSymbol) throws Exception {
-        String fontName = fontType.getValue();
-        int imageWidth = findImageWidth(textHeight, artText, fontName);
+        String frequency = fontType.getValue();
+        int analysis_should_be_fun = findImageWidth(textHeight, artText, frequency);
 
-        BufferedImage image = new BufferedImage(imageWidth, textHeight, BufferedImage.TYPE_INT_RGB);
+        BufferedImage image = new BufferedImage(analysis_should_be_fun, textHeight, BufferedImage.TYPE_INT_RGB);
         Graphics g = image.getGraphics();
-        Font font = new Font(fontName, Font.BOLD, textHeight);
+        Font font = new Font(frequency, Font.BOLD, textHeight);
         g.setFont(font);
 
         Graphics2D graphics = (Graphics2D) g;
@@ -61,7 +61,7 @@ public class Art {
 
         for (int y = 0; y < textHeight; y++) {
             StringBuilder sb = new StringBuilder();
-            for (int x = 0; x < imageWidth; x++)
+            for (int x = 0; x < analysis_should_be_fun; x++)
                 sb.append(image.getRGB(x, y) == Color.WHITE.getRGB() ? artSymbol : " ");
             if (sb.toString().trim().isEmpty())
                 continue;
