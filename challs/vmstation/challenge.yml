@@ -1,0 +1,25 @@
+name: "vmstation"
+author: 
+  - "nox"
+  - "zeski"
+category: "PWN"
+
+description: |
+  So... Where the hooks gone?
+
+value: 400
+type: "standard"
+
+files:
+  - "Dockerfile"
+  - "chall/vmstation"
+  - "chall/wrapper.py"
+flags:
+  - "DCTF{L18c_GO7_15_4_N3W_fR33_hook}"
+tags:
+  - "pwn"
+
+state: "visible"
+version: "0.1"
+
+ops:
