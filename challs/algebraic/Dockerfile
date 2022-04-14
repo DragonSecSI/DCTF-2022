@@ -4,7 +4,7 @@ EXPOSE 1337
 
 RUN export DEBIAN_FRONTEND=noninteractive && \
     apt-get -y update && \
-    apt-get -y install socat coreutils
+    apt-get -y install socat coreutils python3 sagemath
 
 COPY chall/flag.txt /
 COPY chall/server.py /
@@ -18,4 +18,4 @@ RUN chmod 555 /server.py && \
 
 CMD socat -T 30 \
     TCP-LISTEN:1337,nodelay,reuseaddr,fork \
-    EXEC:"python3 algebraic.py"
+    EXEC:"stdbuf -i0 -o0 -e0 python3 server.py"
