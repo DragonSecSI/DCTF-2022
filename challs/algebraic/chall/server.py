@@ -23,9 +23,10 @@ def generate_sig_strings(nr):
 def sign(bitstring): 
     result=0
     for i in range(hashlen): 
-        if bitstring[i] == 1: 
+        if bitstring[i] == '1': 
             result += keys[i]
-    return result
+    return str(result.xy()).strip()
+    #return str(result.xy())
 
 def sign_strings(strings): 
     sigs=[]
@@ -51,6 +52,8 @@ if __name__=="__main__":
     no_sigs=20
     generated=generate_sig_strings(no_sigs)
     generated.append(gen_subset())
+    print(generated[19])
+    #generated.append("11110100111111000111100111110100")
     for string in generated: 
         print(string)
 
@@ -61,19 +64,18 @@ if __name__=="__main__":
     gen_sigs=sign_strings(generated)
     shuffle(gen_sigs)
    
-    # get 5s to sign TODO may be changed
     try: 
-        signal.alarm(19)
-        sig=input("Signature: ").strip()
+        signal.alarm(1900)
+        sig=input("got: ")
+        sig=sig.strip()
+
+        if sig in gen_sigs: 
+            print("Lucky")
+            with open('flag.txt') as f: 
+                print(f.read())
+        else: 
+            print("Unlucky")
+
     except: 
         print("too slow")
-    # defuse alarm
-    signal.alarm(0)
-
-    if sig in gen_sigs: 
-        with open(flag.txt) as f: 
-            print(f.read())
-    else: 
-        print("Unlucky")
-
 
