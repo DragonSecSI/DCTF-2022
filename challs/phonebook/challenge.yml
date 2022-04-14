@@ -1,0 +1,20 @@
+name: "Phonebook"
+author: "VrumVrum"
+category: "PWN"
+
+description: |
+        Exclusive "limited" edition to fit any pocket
+value: 100
+type: "standard"
+
+files:
+  - "./phonebook.zip"
+flags:
+  - "DCTF{C4n_1_g3t_y0ur_numb3r?}"
+tags:
+  - "pwn"
+
+state: "visible"
+version: "0.1"
+
+ops:
