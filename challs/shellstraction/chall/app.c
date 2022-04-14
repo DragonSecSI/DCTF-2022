@@ -20,6 +20,8 @@ char path[200];
 int guard = 0;
 char* notes;
 
+char* notes_arr[10];
+
 // RE
 int token_count;
 char* tokens[50];           // token pointers array limited to 50 pointers??
@@ -115,6 +117,8 @@ void hostname() {
 }
 
 void eton() {
+    int index = -1;
+
     if (!guard) {
         puts("Not enough memory available.");
         lastex = -1;
@@ -127,29 +131,85 @@ void eton() {
         return;
     }
 
+    // formats
+    // note add 0 asokidfh
+    // note remove 0
+    // note show 0 
+
     if (strcmp(tokens[1], "help") == 0) {
         puts("This is a simple shell program for saving personal notes!");
-    } else if (strcmp(tokens[1], "add") == 0) {
+    }
+    else if (strcmp(tokens[1], "add") == 0) {
+        if (token_count < 4) {
+            puts("Not enough arguments for command note");
+            lastex = 0;
+            return;
+        }
+
+        index = atoi(tokens[2]);
+        if (index < 0 || index > 9) {
+            puts("Invalid note index!");
+            lastex = 0;
+            return;
+        }
+
+        puts("Creating a note...");
+        sleep(1);
+        notes_arr[index] = (char*) malloc(50);
+        if (notes_arr[index] != NULL) {
+            strcpy(notes_arr[index], tokens[3]);
+        }
+        puts("Note created");
+    }
+    else if (strcmp(tokens[1], "remove") == 0) {
         if (token_count < 3) {
             puts("Not enough arguments for command note");
             lastex = 0;
             return;
         }
-        puts("Creating a note...");
-        sleep(1);
-        notes = (char*) malloc(50);
-        if (notes != NULL) {
-            strcpy(notes, tokens[2]);
-        }
-        puts("Note created");
-    } else if (strcmp(tokens[1], "remove") == 0) {
+        
         puts("Removing notes...");
+
+        index = atoi(tokens[2]);
+        if (index < 0 || index > 9) {
+            puts("Invalid note index!");
+            lastex = 0;
+            return;
+        }
+
+        if (notes_arr[index] == NULL) {
+            puts("No note to remove.");
+            lastex = 0;
+            return;
+        }
+
         sleep(1);
-        free(notes);
+        free(notes_arr[index]);
         puts("Notes removed.");
-    } else if (strcmp(tokens[1], "show") == 0) {
-        printf("%s\n", notes);
-    } else {
+    }
+    else if (strcmp(tokens[1], "show") == 0) {
+        if (token_count < 3) {
+            puts("Not enough arguments for command note");
+            lastex = 0;
+            return;
+        }
+
+        index = atoi(tokens[2]);
+        if (index < 0 || index > 9) {
+            puts("Invalid note index!");
+            lastex = 0;
+            return;
+        }
+
+        if (notes_arr[index] == NULL) {
+            puts("No note to show.");
+            lastex = 0;
+            return;
+        }
+
+        printf("%s\n", notes_arr[index]);
+    }
+    else {
         puts("Invalid argument for command note");
     }
 
