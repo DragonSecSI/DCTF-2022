@@ -2,7 +2,6 @@ FROM ubuntu:20.04
 
 EXPOSE 1337
 
-# upgrade to get libc-2.31 9.7
 RUN export DEBIAN_FRONTEND=noninteractive && \
     apt-get -y update && \
     apt-get -y upgrade && \
