@@ -45,7 +45,7 @@ if __name__=="__main__":
     parse_keys()
 
     # generate that many possible signatures 
-    no_sigs=20
+    no_sigs=21
     generated=generate_sig_strings(no_sigs)
     for string in generated: 
         print(string)
