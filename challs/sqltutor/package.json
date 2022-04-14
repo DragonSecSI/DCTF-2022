@@ -4,7 +4,7 @@
     "description": "DCTF 2022 - SQL Tutor",
     "main": "server.js",
     "scripts": {
-        "dev": "NODE_ENV=development nodemon src/server.js",
+        "dev": "NODE_ENV=development nodemon --inspect=0.0.0.0:9229 src/server.js",
         "start": "node src/server.js"
     },
     "author": "aljazmedic",
@@ -13,6 +13,7 @@
         "express": "^4.17.3",
         "helmet": "^5.0.2",
         "morgan": "^1.10.0",
+        "mysql2": "^2.3.3",
         "pug": "^3.0.2"
     },
     "devDependencies": {

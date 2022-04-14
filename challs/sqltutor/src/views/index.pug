@@ -5,7 +5,22 @@ block headblock
     </style>
 
 block content
-    h1 INDEX
+    .container
+        h1 SQL Tutor
+        p Welcome to the SQL Tutor!
+        p This is a simple web application that helps you learn SQL.
+        p Use the searchbar and dropdown to try out our database!
+    .input-group.mb-3
+        .input-group-prepend
+
+        input(type="text" id="query_text" placeholder="Enter text here...").form-control
+        select(id="query_no").form-select
+            each v, i in queries
+                option(value=i)=v
+        button(type="submit" id="query_execute").btn.btn-primary Execute!
+
+    .container
+        div(id="query_results")
 
 block scripts
     script(src="/public/js/index.js") 

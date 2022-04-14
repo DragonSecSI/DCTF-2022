@@ -4,7 +4,10 @@ if (NODE_ENV === "development") {
   require("dotenv").config();
 }
 
-const vars = ["DBURI", "PORT", "HOST","HASHING_SECRET"];
+const vars = ["DBURI",
+"PORT",
+"HOST",
+"HASHING_SECRET"];
 
 vars.forEach((v) => {
   const pv = "SQLTUT_" + v;
@@ -13,3 +16,4 @@ vars.forEach((v) => {
   }
   module.exports[v] = process.env[pv];
 });
+
