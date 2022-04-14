@@ -1,0 +1,21 @@
+name: "PWN Template"
+author: "DragonSec"
+category: "PWN"
+
+description: |
+  Multiline
+  description.
+value: 100
+type: "standard"
+
+files:
+  - "chall/app"
+flags:
+  - "DCTF{template_pwn}"
+tags:
+  - "pwn"
+
+state: "visible"
+version: "0.1"
+
+ops:
