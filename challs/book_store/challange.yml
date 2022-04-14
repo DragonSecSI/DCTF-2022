@@ -1,0 +1,20 @@
+name: "BookStore.java"
+author: "DragonSecSI"
+category: "Web"
+
+description: |
+  Book author is a good text analyzer 
+value: 200 
+type: "standard"
+
+files:
+  - ./book_store/book_store.jar
+flags:
+  - "dctf{L0g_4_hid3n_d@7@_n0t_s0_h@rd_righ7}"
+tags:
+  - "web"
+
+state: "visible"
+version: "1.0"
+
+ops:
