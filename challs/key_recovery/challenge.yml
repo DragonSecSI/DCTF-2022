@@ -1,0 +1,21 @@
+name: "Key recovery"
+author: "zeski"
+category: Crypto
+
+description: |
+  I got bored and made a new block cipher, but someone stole my flag and now i need to break it to get it back. Will you help me?
+value: 500
+type: standard
+
+files:
+  - src/key_recovery.py
+
+flags:
+  - dctf{M4k1ng_Sb0x3s_1s_t00_h4rd}
+
+tags:
+  - crypto
+
+state: visible
+
+version: "0.1"

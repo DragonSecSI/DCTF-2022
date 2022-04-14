@@ -1,0 +1,22 @@
+name: "Seek"
+author: "TheLuka"
+category: "Rev"
+
+description: |
+  You should have read the C programming book by now.
+value: 100
+type: "standard"
+
+files:
+- "seek.c"
+- "flag.txt"
+flags:
+- "dctf{found}"
+- "dctf{FOUND}"
+- "DCTF{found}"
+- "DCTF{FOUND}"
+tags:
+- "rev"
+
+state: "visible"
+version: "0.1"
