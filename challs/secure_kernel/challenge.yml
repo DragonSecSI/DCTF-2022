@@ -17,6 +17,7 @@ flags:
 tags:
   - "pwn"
   - "kernel"
+  - "rev"
 
 state: "visible"
 version: "1.0"
