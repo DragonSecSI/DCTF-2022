@@ -1,2 +1,5 @@
 .*.swp
 .DS_Store
+.vscode
+.ctf
+.gdb_history

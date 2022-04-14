@@ -1,6 +1,6 @@
 name: "correcthorsebatterystaple"
-author: "DragonSec"
-category: "CRY"
+author: "mirren"
+category: "Crypto"
 
 description: |
   I found a cool encoding for my secret passwords! 
@@ -17,5 +17,3 @@ tags:
 
 state: "visible"
 version: "0.1"
-
-ops:

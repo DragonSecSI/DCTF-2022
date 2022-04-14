@@ -1,6 +1,6 @@
 name: "algebraic"
 author: "mirren"
-category: "crypto"
+category: "Crypto"
 
 description: 
   Can you forge a signature from the old signatures?
@@ -8,8 +8,8 @@ value: 500
 type: "crypto"
 
 files:
-  - "algebraic.py"
-  - "previous_signatures"
+  - "chall/algebraic.py"
+  - "chall/previous_signatures"
 flags:
   - "dctf{n3v3r_f0rg3t_t0_4dd_k0}"
 tags:
@@ -19,4 +19,3 @@ tags:
 state: "visible"
 version: "1.0"
 
-ops:
