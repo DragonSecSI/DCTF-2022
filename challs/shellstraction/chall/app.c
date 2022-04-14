@@ -26,10 +26,10 @@ char* tokens[50];           // token pointers array limited to 50 pointers??
 char* sh_name;
 int statp;
 int background = 0;
-int file_in = 0;
+/* int file_in = 0;
 char* file_in_name;
 int file_out = 0;
-char* file_out_name;
+char* file_out_name; */
 int lastex = 0;
 
 // sighandler
@@ -283,8 +283,6 @@ void touch() {
         return;
     }
 
-    memset(dirs, 0, 100);
-
     for (i = 1; i < token_count; i++) {
         // copy dir's name from tokens array onto the stack
         // there is 50 tokens max
@@ -304,7 +302,6 @@ void touch() {
         guard = 1;
     }
 
-    printf("%s\n", dirs);
 }
 
 int main(int argc, char **argv) {
@@ -327,9 +324,11 @@ int main(int argc, char **argv) {
 	while (1) {
 	    char* line = NULL;
 	    size_t size = 0;
-	    if (isatty(1)) {
+	    /* if (isatty(1)) {                         // i had to comment this part out, otherwise the server wouldn't print the prompt when connected to via nc 
             printf("%s@%s:%s$ ", user, host, path);
-        }
+        } */
+        printf("%s@%s:%s$ ", user, host, path);
+
 	    int out = getline(&line, &size, stdin);         // stores pointer to buffer to *lineptr and updates *n with buffer size, returns number of chars read
 	    if (out == -1) {                                // failure or EOF
 	        return 0;
@@ -350,23 +349,23 @@ int main(int argc, char **argv) {
 
         // order of file redirection: <inFile, >outFile, &
 
-        // redirect output into another file?
-	    if (tokens[token_count - 1][0] == '>') {
+        // redirect output into another file?                       // i commented these out because competetitors could've overwritten flag.txt file with "echo adsjhf >flag.txt"
+	    /* if (tokens[token_count - 1][0] == '>') {
 	        file_out = 1;
 	        file_out_name = &(tokens[token_count-1][1]);
 	        token_count--;
 	    } else {
 	        file_out = 0;
-	    }
+	    } */
 
         // redirect input from another file?
-	    if (tokens[token_count - 1][0] == '<') {
+	    /* if (tokens[token_count - 1][0] == '<') {
 	        file_in = 1;
 	        file_in_name = &(tokens[token_count-1][1]);
 	        token_count--;
 	    } else {
 	        file_in = 0;
-	    }
+	    } */
 
 	    /* printf("\nTokens:\n");
 	    for (int i = 0; i < token_count; i++) {
@@ -382,7 +381,7 @@ int main(int argc, char **argv) {
 	    }
 
         // open files for redirecting input/output
-	    FILE* old_stdout = stdout;
+	    /* FILE* old_stdout = stdout;
 	    if (file_out == 1) {
 	        stdout = fopen(file_out_name, "w");
             if (stdout == NULL) {
@@ -402,7 +401,7 @@ int main(int argc, char **argv) {
                 fflush(stdout);
                 continue;
             }
-	    }
+	    } */
 
         // evaluating the tokens
 	    if (strcmp(tokens[0], "name") == 0)             name();
@@ -427,12 +426,12 @@ int main(int argc, char **argv) {
 	        return lastex;
 	    }
         // handlers for inpt/output redirection finalization
-	    if (file_out == 1) {
+	    /* if (file_out == 1) {
 	        stdout = old_stdout;
 	    }
 	    if (file_in == 1) {
 	        stdin = old_stdin;
-	    }
+	    } */
 	}
 
     free(sh_name);

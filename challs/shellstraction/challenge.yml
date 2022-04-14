@@ -4,11 +4,14 @@ category: "PWN"
 
 description: |
   The oposite of inception is extraction.
+  `nc ??? ???`
 value: 100
 type: "standard"
 
 files:
   - "chall/app"
+  - "Dockerfile"
+  - "handle_conn.py"
 flags:
   - "dctf{D035_4nyb0dy_l1st3n_T0_Ur14h_He4p_1093875hv914387v}"
 tags:
@@ -16,3 +19,5 @@ tags:
 
 state: "visible"
 version: "0.1"
+
+ops:

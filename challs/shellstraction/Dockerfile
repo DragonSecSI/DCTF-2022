@@ -4,14 +4,16 @@ EXPOSE 1337
 
 RUN export DEBIAN_FRONTEND=noninteractive && \
     apt-get -y update && \
-    apt-get -y install socat coreutils
+    apt-get -y install socat coreutils && \
+    apt-get -y install python3 
 
 COPY chall/flag.txt /
 COPY chall/app /
+COPY handle_conn.py /
 
 RUN chmod 555 /app && \
     chmod 444 /flag.txt
 
 CMD socat -T 30 \
     TCP-LISTEN:1337,nodelay,reuseaddr,fork \
-    EXEC:"stdbuf -i0 -o0 -e0 /app"
+    EXEC:"python3 handle_conn.py"
