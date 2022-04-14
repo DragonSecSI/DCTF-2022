@@ -339,8 +339,8 @@ def get_rules(path, outf):
             line = dir + " -> " + "|".join([x.replace(".txt", "") for x in os.listdir(os.path.join(path, dir))]) + "\n"
             f.write(line)
 
-file = "chall/cfg.txt"
-grammar = Grammar(file)
+#file = "chall/cfg.txt"
+#grammar = Grammar(file)
 #grammar.reduce_mappings()
 #grammar.add_useless_productions()
 #grammar.scramble_nonterminals()
