@@ -1,0 +1,73 @@
+# Terminals
+<string>: [a-z][a-z0-9]*
+<digit>: [0-9]+
+<symbol>: ( | ) | + | - | <= | >= | == | * | / | %
+
+# Statements
+<read>: read
+<print>: print <string>
+<mangle>: mangle
+<reghash>: reghash
+<exit>: exit
+
+# Branches
+<if>:
+	if ( <expr> ) <stmt> |
+	if ( <expr> ) <stmt> else <stmt>
+
+# Expressions
+<expr>:
+	<expr_l0> <= <expr_l0> |
+	<expr_l0> >= <expr_l0> |
+	<expr_l0> == <expr_l0>
+<expr_l0>:
+	( <expr_l0> ) |
+	<expr_l1>
+<expr_l1>:
+	<expr_l1> * <expr_l1> |
+	<expr_l1> / <expr_l1> |
+	<expr_l2>
+<expr_l2>:
+	<expr_l2> + <expr_l2> |
+	<expr_l2> - <expr_l2> |
+	<expr_l3>
+<expr_l3>:
+	<expr_l3> % <expr_l3> |
+	<digit> |
+	<read>
+
+# Statements
+<stmts>: <stmt> <stmts> | ε
+<stmt>:
+	<print> |
+	<mangle> |
+	<reghash> |
+	<exit> |
+	<if>
+
+
+---
+
+# Expressions LL1
+<expr>:
+	<expr_l0> <= <expr_l0> |
+	<expr_l0> >= <expr_l0> |
+	<expr_l0> == <expr_l0>
+<expr_l0>: <expr_l1> <expr_l0_p>
+<expr_l0_p>:
+	+ <expr_l1> <expr_l0_p> |
+	- <expr_l1> <expr_l0_p> |
+	ε
+<expr_l1>: <expr_l2> <expr_l1_p>
+<expr_l1_p>:
+	* <expr_l2> <expr_l1_p> |
+	/ <expr_l2> <expr_l1_p> |
+	ε
+<expr_l2>: <expr_l3> <expr_l2_p>
+<expr_l2_p>:
+	% <expr_l3> <expr_l2_p>
+<expr_l3>:
+	( <expr_l0> ) |
+	<digit> |
+	<read>
+

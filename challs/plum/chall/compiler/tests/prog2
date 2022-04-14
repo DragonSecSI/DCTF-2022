@@ -1,0 +1,10 @@
+if (1==0)
+	if (1 == 0)
+		print "N1"
+	else
+		print "N2"
+else
+	if ((1+9) == 5*2)
+		print "Y"
+	else
+		print "N3"

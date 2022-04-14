@@ -1,0 +1,23 @@
+name: "Plum"
+author: "zeski, aJuvan"
+category: "Rev"
+
+description: |
+  We really suck at making compilers ...
+  Could you fix this one up for us?
+value: 100
+type: "standard"
+
+files:
+  - "chall/compiler/compiler"
+  - "chall/vm/vm"
+  - "chall/program.plum"
+flags:
+  - "dctf{template_rev}"
+tags:
+  - "rev"
+
+state: "visible"
+version: "0.1"
+
+ops:
