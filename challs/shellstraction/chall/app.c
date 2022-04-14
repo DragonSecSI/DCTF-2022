@@ -18,7 +18,6 @@ char* host;
 char path[200];
 
 int guard = 0;
-char* notes;
 
 char* notes_arr[10];
 
@@ -155,7 +154,7 @@ void eton() {
 
         puts("Creating a note...");
         sleep(1);
-        notes_arr[index] = (char*) malloc(50);
+        notes_arr[index] = (char*) malloc(strlen(tokens[3]) + 1);
         if (notes_arr[index] != NULL) {
             strcpy(notes_arr[index], tokens[3]);
         }
