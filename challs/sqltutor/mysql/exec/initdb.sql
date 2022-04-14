@@ -1,7 +1,11 @@
 USE `database`;
 
+USE COLLATE utf8_general_ci;
+
 DROP TABLE IF EXISTS `cars`;
+
 DROP TABLE IF EXISTS `users`;
+
 DROP TABLE IF EXISTS `flags`;
 
 CREATE TABLE IF NOT EXISTS `users` (
@@ -9,7 +13,7 @@ CREATE TABLE IF NOT EXISTS `users` (
     name VARCHAR(50),
     surname VARCHAR(50),
     age INTEGER
-);
+) DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 CREATE TABLE IF NOT EXISTS `cars` (
     id INTEGER PRIMARY KEY auto_increment,
@@ -17,20 +21,30 @@ CREATE TABLE IF NOT EXISTS `cars` (
     model VARCHAR(50),
     ownerID INTEGER,
     FOREIGN KEY (ownerID) REFERENCES `users`(`id`)
-);
+) DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 CREATE TABLE IF NOT EXISTS `flags` (
-	id INTEGER PRIMARY KEY auto_increment,
+    id INTEGER PRIMARY KEY auto_increment,
     flag VARCHAR(50)
-);
+) DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 -- TODO! Only read for branko
-GRANT SELECT ON `database`.`cars` TO `branko`;
-GRANT SELECT ON `database`.`users` TO `branko`;
-GRANT SELECT ON `database`.`flags` TO `branko`;
+GRANT
+SELECT
+    ON `database`.`cars` TO `branko`;
 
-INSERT INTO `flags` (`flag`) VALUES ('dctf{Pump_1t_up_7h3_s7r3am_353aa965}');
+GRANT
+SELECT
+    ON `database`.`users` TO `branko`;
 
+GRANT
+SELECT
+    ON `database`.`flags` TO `branko`;
+
+INSERT INTO
+    `flags` (`flag`)
+VALUES
+    ('dctf{Pump_7h3_s7r3am_h4s5_up!_353aa965}');
 
 INSERT INTO
     `users`(id, name, surname, age)

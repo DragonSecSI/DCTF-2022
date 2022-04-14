@@ -2,6 +2,8 @@ const crypto = require("crypto");
 const { HASHING_SECRET, DBURI } = require("./config");
 const mysql2 = require("mysql2");
 
+console.log("HASHING SECRET:", HASHING_SECRET);
+
 /// DATABASE SECTION ///
 
 function getConnection() {
@@ -46,12 +48,17 @@ const ALL_QUERIES = [
       "SELECT cars.* FROM cars JOIN users ON cars.ownerID=users.id WHERE users.name='{0}'",
     description: "This query selects all cars owned by '{0}'.",
   },
+  {
+    query: "SELECT name AS `{0}` FROM users WHERE users.id < 10",
+    description:
+      "This query selects all users with id less than 10, and rename the result column to '{0}'.",
+  },
 ];
 
 /// CRYPTO SECTION ///
 function sanitizeSQLtext(query) {
   const re =
-    /(drop|alter|delete|remove|show|select|union|on|[='"+:;,#*%<>]|where|0x|database|sql|null|true|false)/gi;
+    /(drop|alter|delete|remove|show|select|union|on|[='"+:;,#*`%<>]|where|0x|database|sql|null|true|false)/gi;
   let trimmed = query.replace(/\s+/gi, " ").trim();
   const m = trimmed.match(re);
   const s = Array.from(new Set(m)).join(" ").toUpperCase();
@@ -61,10 +68,8 @@ function sanitizeSQLtext(query) {
 }
 
 function hashPayload(payload) {
-  return crypto
-    .createHash("sha256")
-    .update(HASHING_SECRET + payload)
-    .digest("hex");
+  const b = Buffer.concat([Buffer.from(HASHING_SECRET, "ascii"), payload]);
+  return crypto.createHash("sha1").update(b).digest("hex");
 }
 
 /// UTIL SECTION ///

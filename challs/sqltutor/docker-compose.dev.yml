@@ -10,23 +10,22 @@ services:
       # NE DALJSA OD 10!!
       SQLTUT_HASHING_SECRET: v3s01jc7
     ports:
-      - 8088:80
+      - "8088:80"
+      - "9229:9229"
+    volumes:
+      - C:\\ctf\\dctf2022\\DCTF-2022\\challs\\sqltutor:/usr/src/app
+    command: npm run dev
 
   database:
     image: mysql
-    restart: always
     environment:
       MYSQL_ROOT_PASSWORD: "c76b525e53f3b9204222b319a4880b353aa9659be58660241f9d17a16cac7b38"
       MYSQL_USER: branko
       MYSQL_PASSWORD: 22b319a4880b353aa9659be58660241f9
       MYSQL_DATABASE: database
     volumes:
-      - ./mysql/exec/initdb.sql:/docker-entrypoint-initdb.d/initdb.sql
-      - db:/var/lib/mysql
+      - ./mysql/exec:/docker-entrypoint-initdb.d
+      - ./mysql/database:/var/lib/mysql
     ports:
       - 3316:3306
       - 33160:33060
-
-volumes:
-  db:
-    driver: local

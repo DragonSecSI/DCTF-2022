@@ -1,4 +1,7 @@
 node_modules
 .env
 docker-compose*
-mysql/database
+mysql
+sol*
+venv
+.vscode

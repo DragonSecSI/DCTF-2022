@@ -11,7 +11,6 @@ const {
 
 router.get("/", (req, res) => {
   // Render webpage
-  console.log("Router");
   res.render("index", {
     queries: ALL_QUERIES.map((v) => formatString(v.query, "...")),
   });
@@ -19,26 +18,26 @@ router.get("/", (req, res) => {
 
 router.post("/verify_and_sign_text", (req, res) => {
   console.log(req.body);
-  //Check body has md5 specified
+  //Check body has sha1 specified
   //prepend secret and hash
   const steps = [];
   const { alg, text = "", debug = false } = req.body;
-  if (alg !== "sha256")
+  if (alg !== "sha1")
     return res.json({
       status: "error",
       message: "Invalid signature generation algorithm!",
       debug: debug ? { input: { alg, text }, steps } : null,
     });
-  steps.push("Selected sha256 algorithm ✅");
+  steps.push("Selected sha1 algorithm ✅");
   let textAscii;
   try {
     const textBuff = Buffer.from(text, "base64");
-    textAscii = textBuff.toString("ascii");
+    textAscii = textBuff.toString("ASCII");
   } catch (e) {
     console.error(e);
     return res.json({
       status: "error",
-      message: "Invalid text form paramter - not in base64",
+      message: "Invalid text parameter - not in base64",
       debug: debug ? { input: { alg, text }, steps } : null,
     });
   }
@@ -52,11 +51,13 @@ router.post("/verify_and_sign_text", (req, res) => {
     });
   }
   steps.push("Trimmed and checked the text ✅");
-  const retText = Buffer.from(sanitized).toString("base64");
+  const sanitizedBuff = Buffer.from(sanitized, "ASCII");
+  console.log("sanitizedBuff:", sanitizedBuff.toString("hex"));
+  const retText = sanitizedBuff.toString("base64");
   // strip in client
-  // Make it one-time ?
-  const signature = hashPayload(sanitized);
-  steps.push("Created signature: prepended secret and sha256 ✅");
+  const signature = hashPayload(sanitizedBuff);
+  console.log("signature: " + signature);
+  steps.push("Created signature: sha1(secret+sanitize(text)) ✅");
   return res.json({
     status: "ok",
     trimmedText: retText,
@@ -83,10 +84,9 @@ router.post("/execute", (req, res) => {
       debug: debug ? { input: { signature, text }, steps } : null,
     });
 
-  let textAscii;
+  let textBuff;
   try {
-    const textBuff = Buffer.from(text, "base64");
-    textAscii = textBuff.toString("ascii");
+    textBuff = Buffer.from(text, "base64");
   } catch (e) {
     console.error(e);
     return res.json({
@@ -107,25 +107,50 @@ router.post("/execute", (req, res) => {
     steps.push(`Selected query #${queryNoInt} ✅`);
   }
 
-  const hashed = hashPayload(textAscii);
+  const hashed = hashPayload(textBuff);
+  console.log("hashed(text):", hashed);
+  console.log("signature:", signature);
   if (hashed !== signature)
     return res.json({
       status: "error",
       message: "Invalid text signature, this incident will be reported!",
-      debug: debug ? { input: { signature, text }, steps } : null,
+      debug: debug
+        ? {
+            input: { signature, text },
+            steps,
+            compare: `${hashed} !== ${signature}`,
+          }
+        : null,
     });
 
   steps.push("Confirmed text and signature match ✅");
+
   // Make sure sql injection is possible
   const connection = getConnection();
+
+  let textAscii = textBuff.toString("ascii");
+  //console.log(textBuff.toString("hex"));
+
+  textAscii = textAscii.replace(/[^\x20-\x7E]/g, "");
+
   const description = formatString(selectedQuery.description || "", [
     textAscii,
   ]);
   const sqlQuery = formatString(selectedQuery.query, [textAscii]);
+  console.log("SQL Query: " + sqlQuery);
   connection.execute(sqlQuery, (err, results) => {
     if (err) {
-      console.error(err);
-      return failInternal(res);
+      return res.json({
+        status: "error",
+        message: "Invalid SQL Syntax. This incident will be reported!",
+        debug: debug
+          ? {
+              input: { signature, text },
+              steps,
+              sqlErr: { sqlMessage: err.sqlMessage, sql: err.sql },
+            }
+          : null,
+      });
     }
     steps.push("Executed query ✅");
     return res.json({

@@ -14,7 +14,6 @@ $(() => {
         //debug:true,
       },
     }).done((data) => {
-      console.log(data);
       if (data.status === "ok") {
         //Write query to pre in html
         $("#query_results").html(`<pre>Executed: ${data.query}</pre>`);
@@ -64,18 +63,20 @@ $(() => {
       alert("Please enter some text");
       return;
     }
+
+    // Because people continously try to break the app,
+    // we need to make sure that the text is checked and signed
     $.ajax({
       type: "POST",
       url: "/verify_and_sign_text",
       data: {
         // Backend devs said that the query should be base64 encoded
         text: btoa(contents),
-        alg: "sha256",
+        alg: "sha1",
         //debug:true
       },
     })
       .done((data) => {
-        console.log(data);
         if (data.status === "ok") {
           // Overwrite sanitized query
           $("#query_text").val(atob(data.trimmedText));
@@ -84,11 +85,8 @@ $(() => {
           alert("Error: " + data.message);
         }
       })
-      .fail((errdata, b, c) => {
+      .catch((errdata) => {
         console.error(errdata);
-        console.log(b);
-        console.log(c);
-        //alert("Error: " + errdata.message);
       });
   });
 });
