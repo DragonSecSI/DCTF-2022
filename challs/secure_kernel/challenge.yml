@@ -5,13 +5,15 @@ category: "PWN"
 description: |
   Why protect your userspace when you can just store your flag in the kernel? 
   I even tell you where it is!
+  
+  CMake in a build directory, then run make && make qemu
 value: 400
 type: "standard"
 
 files:
   - "chall/challenge.tar.gz"
 flags:
-  - "DCTF{R4c3c0nd1t1ons_4r3_fun}"
+  - "dctf{R4c3c0nd1t1ons_4r3_fun}"
 tags:
   - "pwn"
   - "kernel"
