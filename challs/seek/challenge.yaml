@@ -2,7 +2,8 @@ name: "Seek"
 author: "TheLuka"
 category: "Rev"
 
-description: 
+description: |
+  You should have read the C programming book by now.
 value: 100
 type: "standard"
 
