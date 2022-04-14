@@ -1,0 +1,23 @@
+name: "Safe Space"
+author: "Pixel"
+category: Misc
+
+description: |
+  All this talk about security, so I hid my flag in my safe space. Well the least I can do is let you use my console...
+
+  Author: Pixel#1111
+value: 150
+type: standard
+
+files:
+
+flags:
+  - dctf{bur5t_y0ur_bubbl3}
+
+tags:
+  - python
+  - misc
+
+state: visible
+
+version: "0.1"
