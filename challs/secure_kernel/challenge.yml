@@ -3,7 +3,8 @@ author: "hweissi"
 category: "PWN"
 
 description: |
-  Why protect your userspace when you can just store your flag in the kernel?
+  Why protect your userspace when you can just store your flag in the kernel? 
+  I even tell you where it is!
 value: 400
 type: "standard"
 
@@ -18,4 +19,4 @@ tags:
 state: "visible"
 version: "1.0"
 
-ops:
+
