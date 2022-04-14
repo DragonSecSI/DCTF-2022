@@ -1,21 +1,21 @@
-name: "PWN Template"
-author: "DragonSec"
+name: "Secure Kernel"
+author: "hweissi"
 category: "PWN"
 
 description: |
-  Multiline
-  description.
-value: 100
+  Why protect your userspace when you can just store your flag in the kernel?
+value: 400
 type: "standard"
 
 files:
-  - "chall/app"
+  - "chall/challenge.tar.gz"
 flags:
-  - "DCTF{template_pwn}"
+  - "DCTF{R4c3c0nd1t1ons_4r3_fun}"
 tags:
   - "pwn"
+  - "kernel"
 
 state: "visible"
-version: "0.1"
+version: "1.0"
 
 ops:
