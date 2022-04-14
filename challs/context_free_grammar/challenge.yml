@@ -4,6 +4,7 @@ category: "Misc"
 
 description: |
   The flag is in format dctf{7_4_2_3_7_4} where numbers represent number of characters between underscores.
+  Author: SnackOverflow#2306
 value: 100
 type: "standard"
 
