@@ -1,9 +1,9 @@
 S -> dctf{ A _ B _ C _ D _ E _ B }
-A -> F F F F F F F
-B -> G G G G
+A -> F F
+B -> G G
 C -> H H
-D -> I I I
-E -> J J J J J J
+D -> I I
+E -> J J
 F -> c|n|t|x|0|3
 G -> f|r|3
 H -> 15

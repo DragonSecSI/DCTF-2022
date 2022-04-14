@@ -270,7 +270,7 @@ class Grammar():
 
         self.productions = dict(new_productions)
 
-    def get_flag(self, ns=[0,0,7,0,4,0,2,0,3,0,7,0,4,0]):
+    def get_flag(self, ns=[-1,-1,7,0,4,0,2,0,3,0,7,0,4,-1]):
         flag_mappings = self.productions['S']
         print(flag_mappings)
 
@@ -278,20 +278,28 @@ class Grammar():
         print("Similarly every second and last to {_}\n")
         print("The only thing left is to permutate possibilites for flag parts")
 
+        out_flag = "dctf{"
         for n, field in zip(ns, flag_mappings[0].split(" ")):
-            if n==0:
+            if n < 0:
                 pass
+            elif n == 0:
+                out_flag += "_"
             else:
                 ms = self.productions[field][0].split(" ")
                 if field in ms:
                     ms.remove(field)
                 m = ms[0]
                 chars = self.productions[m]
+
                 options = itertools.product(chars, repeat=n)
                 for o in options:
                     x = "".join(o)
+
                     if x in "c0nt3xt_fR33_15_n07_m34n1ng_fr33":
                         print(x)
+                        out_flag += x
+        out_flag += "}"
+        print("Flag:", out_flag)
 
 def next_nonterminal(nonterminal):
     nt = nonterminal[:]
@@ -348,11 +356,10 @@ def get_rules(path, outf):
 #grammar.print_productions()
 #grammar.get_flag()
 #generate_folders(file, "test")
+
+# cfg is the extracted folder name
 get_rules("cfg", "test.txt")
 grammar = Grammar("test.txt")
-grammar.reduce_mappings()
-grammar.add_useless_productions()
-grammar.scramble_nonterminals()
 grammar.simplify()
 grammar.print_productions()
 grammar.get_flag()
