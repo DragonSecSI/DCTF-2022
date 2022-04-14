@@ -1,0 +1,26 @@
+name: "MACdonalds 1"
+author: "jerdnA"
+category: "Crypto"
+
+description: |
+  You were really excited when your mom said you were going to get
+  chicken nuggets for dinner, but the joy was short lived. Stepping
+  out of the car, you realized she took you to MACdonalds, the
+  franchise serving up questionable MAC schemes.
+
+  The first item on the menu is CBC-MAC. Do you think you can create
+  a forgery?
+value: 50
+type: "standard"
+connection_info: "nc pwn.dragonsec.si 13370"
+
+files:
+  - "chall/challenger.py"
+  - "chall/template.py"
+flags:
+  - "dctf{Paper_is_technically_made_out_of_sugar.}"
+tags:
+  - "crypto"
+
+state: "visible"
+version: "0.1"

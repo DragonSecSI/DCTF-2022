@@ -1,0 +1,18 @@
+name: "UseForce"
+author: "TheLuka"
+category: "Rev"
+
+description: |
+  Are Dragons Bulletproof?
+value: 100
+type: "standard"
+
+files:
+- "app-release.apk"
+flags:
+- "dctf{L00k_MoM_No-h4nds}"
+tags:
+- "rev"
+
+state: "visible"
+version: "0.1"

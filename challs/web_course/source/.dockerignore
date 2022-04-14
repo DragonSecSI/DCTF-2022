@@ -1,6 +1,0 @@
-.env.example
-.git
-LICENSE
-*.md
-.cache
-Procfile

@@ -1,0 +1,20 @@
+name: "Crapto"
+author: "CraftByte"
+category: "Misc"
+
+description: |
+  Our company now upgraded to secure cards, but I think they forgot to set something...
+value: 500
+type: "standard"
+
+files:
+  - "chall/card.trace"
+flags:
+  - "dctf{rf1d_15_c0mpl1c4t3d}"
+tags:
+  - "rfid"
+
+state: "visible"
+version: "0.1"
+
+ops:
