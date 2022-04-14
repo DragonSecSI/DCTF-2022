@@ -1,0 +1,21 @@
+name: "Grammar nazi"
+author: "SnackOverflow"
+category: "Misc"
+
+description: |
+  The flag is in format dctf{7_4_2_3_7_4}.
+value: 100
+type: "standard"
+
+files:
+  - "chall/cfg.txt"
+flags:
+  - "dctf{c0nt3xt_fR33_15_n07_m34n1ng_fr33}"
+tags:
+  - "misc"
+  - "context-free grammar"
+
+state: "visible"
+version: "0.1"
+
+ops:
