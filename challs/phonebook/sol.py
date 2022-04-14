@@ -3,7 +3,7 @@ from pwn import *
 #context.log_level = 'debug'
 context.terminal = ['tmux', 'new-window']
 
-binary = './a.out'
+binary = './chall/phonebook'
 nc = 'nc 0.0.0.0 1337'
 elf = context.binary = ELF(binary, checksec=False)
 gdbscript = """
