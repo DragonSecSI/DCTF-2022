@@ -1,5 +1,5 @@
 from sage.all import * 
-from random import randint, choice
+from random import randint, choice, shuffle
 import signal
 from constants import subset_sigs
 
@@ -16,16 +16,16 @@ def generate_sig_strings(no_sigs):
     sigs=[] 
     with open('challenge_strings') as f: 
         lines=f.readlines()
-        for _ in range no_sigs: 
+        for _ in range(no_sigs): 
             sigs.append(random.choice(lines))
 
 def sign(bitstring): 
     '''sign with Naor-Reingold'''
     result=0
     for i in range(hashlen): 
-        if bitstring[i] == 1: 
+        if bitstring[i] == '1': 
             result += keys[i]
-    return result
+    return str(result.xy()).strip()
 
 def sign_strings(strings): 
     sigs=[]
@@ -47,6 +47,7 @@ if __name__=="__main__":
     # generate that many possible signatures 
     no_sigs=21
     generated=generate_sig_strings(no_sigs)
+    shuffle(generated)
     for string in generated: 
         print(string)
 
@@ -55,20 +56,20 @@ if __name__=="__main__":
 
     # gen subset sigs
     gen_sigs=sign_strings(generated)
-    shuffle(gen_sigs)
    
     try: 
         signal.alarm(19)
-        sig=input("Signature: ").strip()
+        sig=input("Signature: ")
+        sig=sig.strip()
+
+        if sig in gen_sigs: 
+            print("Lucky")
+            with open(flag.txt) as f: 
+                print(f.read())
+        else: 
+            print("Unlucky")
+
     except: 
         print("too slow")
-    # defuse alarm
-    signal.alarm(0)
-
-    if sig in gen_sigs: 
-        with open(flag.txt) as f: 
-            print(f.read())
-    else: 
-        print("Unlucky")
 
 

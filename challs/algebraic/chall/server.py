@@ -26,7 +26,6 @@ def sign(bitstring):
         if bitstring[i] == '1': 
             result += keys[i]
     return str(result.xy()).strip()
-    #return str(result.xy())
 
 def sign_strings(strings): 
     sigs=[]
@@ -48,25 +47,22 @@ if __name__=="__main__":
     #parse keys
     parse_keys()
 
-    # generate that many possible signatures 
+    # gen subset + rand strings
     no_sigs=20
     generated=generate_sig_strings(no_sigs)
     generated.append(gen_subset())
-    print(generated[19])
-    #generated.append("11110100111111000111100111110100")
+    shuffle(generated)
     for string in generated: 
         print(string)
 
-    # gen subset + rand strings
     print("sign one of these strings: ")
 
     # gen subset sigs
     gen_sigs=sign_strings(generated)
-    shuffle(gen_sigs)
    
     try: 
-        signal.alarm(1900)
-        sig=input("got: ")
+        signal.alarm(19)
+        sig=input("Signature: ")
         sig=sig.strip()
 
         if sig in gen_sigs: 
