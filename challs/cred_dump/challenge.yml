@@ -4,7 +4,9 @@ category: "Forensics"
 
 description: |
   With the connection to the victim's computer you managed to dump the lsass.exe process. Can you get the password from the dump file?
-value: 100
+  
+  Author: Pixel#1111
+value: 200
 type: "standard"
 
 files:
