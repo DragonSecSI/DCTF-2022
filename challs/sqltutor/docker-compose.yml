@@ -10,7 +10,7 @@ services:
       # NE DALJSA OD 10!!
       SQLTUT_HASHING_SECRET: v3s01jc7
     ports:
-      - 8088:80
+      - 80:80
 
   database:
     image: mysql
@@ -22,11 +22,5 @@ services:
       MYSQL_DATABASE: database
     volumes:
       - ./mysql/exec/initdb.sql:/docker-entrypoint-initdb.d/initdb.sql
-      - db:/var/lib/mysql
     ports:
       - 3316:3306
-      - 33160:33060
-
-volumes:
-  db:
-    driver: local

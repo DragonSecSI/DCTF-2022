@@ -1,7 +1,5 @@
 USE `database`;
 
-USE COLLATE utf8_general_ci;
-
 DROP TABLE IF EXISTS `cars`;
 
 DROP TABLE IF EXISTS `users`;
