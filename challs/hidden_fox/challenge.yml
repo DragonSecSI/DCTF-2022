@@ -1,0 +1,23 @@
+name: "Hidden Fox"
+author: "Pixel"
+category: "Forensics"
+
+description: |
+  I let Firefox save some of my stuff while browsing, it should be written somewhere in it's directory, can you find it?
+  Flag is in two parts.
+
+  Author: Pixel#1111
+value: 100
+type: "standard"
+
+files:
+  - "Firefox.zip"
+flags:
+  - "dctf{1_b00km4rk3d__th15_p455w0rd}"
+tags:
+  - "forensics"
+
+state: "visible"
+version: "1.0"
+
+ops:
