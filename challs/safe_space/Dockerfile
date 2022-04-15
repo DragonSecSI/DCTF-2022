@@ -9,7 +9,7 @@ WORKDIR /ctf
 RUN useradd -M -d /ctf ctf
 
 RUN echo "Connection blocked" > /etc/banner_fail
-COPY key_recovery.xinetd /etc/xinetd.d/ctf
+COPY safe_space.xinetd /etc/xinetd.d/ctf
 COPY ./src /ctf/
 
 RUN chown -R root:ctf /ctf && \
@@ -20,4 +20,4 @@ RUN chown -R root:ctf /ctf && \
 ENTRYPOINT []
 CMD ["/usr/sbin/xinetd", "-dontfork"]
 
-EXPOSE 1337
+EXPOSE 8888

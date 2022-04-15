@@ -1,2 +1,2 @@
 #!/bin/bash
-docker run -dp 8888:8888 key_recovery
+docker run -dp 8888:8888 safe_space
