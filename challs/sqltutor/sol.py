@@ -5,7 +5,7 @@ import hashpumpy
 import base64
 import re
 
-URL = "http://172.31.176.1:8088"
+URL = "http://localhost"
 
 sig=""
 original=""
