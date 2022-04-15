@@ -9,3 +9,5 @@
 6. One option is to try adding bytes that tell 7zip to decompress - in this case `08`. 
 7. Then 7zip can decompress the "zip" and you get the text file, this time readable.
 8. Search for flag format.
+
+Solution script can be run as: pwsh solve.sh
