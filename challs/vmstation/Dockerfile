@@ -9,15 +9,13 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
 
 RUN mkdir /chall
 
-COPY chall/we_kind_thought_leaking_this_was_gonna_be_another_chall_flag.txt /chall/
-COPY chall/vmstation /chall/
+COPY chall/flag.txt /chall/
 COPY chall/wrapper.py /chall/
-COPY chall/sol.py /chall/
 COPY chall/vm.c /chall/
-
+COPY chall/vmstation /chall/
 
 RUN chmod 555 /chall/vmstation && \
-    chmod 444 /chall/we_kind_thought_leaking_this_was_gonna_be_another_chall_flag.txt && \ 
+    chmod 444 /chall/flag.txt && \ 
     gcc /chall/vm.c -o /chall/vmstation -lcrypto -s
 
 WORKDIR /chall
