@@ -1,4 +1,4 @@
-CXX=clang++
+CXX=g++
 CXXFLAGS=-std=c++17 -Iinc
 CXXLIBS=
 OBJS=tokenizer.o grammar.o nodes.o asm.o

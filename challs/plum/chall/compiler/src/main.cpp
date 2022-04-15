@@ -1,6 +1,6 @@
 #include "main.hpp"
 
-bool debug = true;
+bool debug = false;
 
 int main(int argc, char* argv[])
 {

@@ -6,7 +6,7 @@
 //#define DEBUG
 
 const int regs_size = 32;
-int regs[regs_size] = {0};
+int regs[32] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 
 void xor(){
     char *buf;
