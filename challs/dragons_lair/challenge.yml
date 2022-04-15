@@ -1,0 +1,24 @@
+name: "Dragon's Lair"
+author: "Pixel"
+category: Misc
+
+description: |
+  Well unlike some would believe we dont really have control over dragons. A few days ago one of them stole one of our flags. Can you raid his lair and retrieve the flag?
+
+  Author: Pixel#1111  
+value: 300
+type: standard
+
+files:
+  - src.py
+
+flags:
+  - dctf{y0ur_dr4g0n_r4ce_rep_d3cre4s3d_but_Dr4gonSecSI_r3p_1ncr34sed}
+
+tags:
+  - python
+  - misc
+
+state: visible
+
+version: "0.1"
