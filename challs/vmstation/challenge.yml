@@ -10,7 +10,7 @@ value: 400
 type: "standard"
 
 files:
-  - "Dockerfile"
+  - "Dockerfile_server"
   - "chall/vmstation"
   - "chall/wrapper.py"
 flags:

