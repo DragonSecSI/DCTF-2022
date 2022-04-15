@@ -1,0 +1,27 @@
+name: "Plum"
+author: "zeski, aJuvan"
+category: "Rev"
+
+description: |
+  We really suck at making compilers ...
+  Could you fix this one up for us?
+type: "dynamic"
+extra:
+    initial: 500
+    decay: 200
+    minimum: 50
+
+files:
+  - "chall/compiler/compiler"
+  - "chall/vm/vm"
+  - "chall/program.plum"
+  - "chall/flag.enc"
+flags:
+  - "dctf{W3_d3c1d3d_vm_r3v5_4r3_t00_345y_s0_h3r3_1s_4_c0mp1l3r}"
+tags:
+  - "rev"
+
+state: "visible"
+version: "0.1"
+
+ops:

@@ -1,0 +1,6 @@
+print "Hello world!"
+
+if (1+1*2/3<=2) print "3"
+else exit
+
+print "still 3"

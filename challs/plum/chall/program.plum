@@ -1,0 +1,45 @@
+print "Bug 0: Ok first of all, these strings don't seem right..."
+
+print "Bug 1: what the hell are all these flags?!?!?!"
+
+print "Bug 2:"
+
+if (read == 1) print "Yes, it's 1!"
+else exit
+reghash
+print "Correct: 0cbb187ac3b9330bf33d7076f21e9e40b646cbe5bec086377ad6dbbb74898f40"
+
+if ((1+6*5) % 16 == read * 3) print "Right again, it's 5!"
+else exit
+reghash
+print "Correct: 61d62325b60982341673adf168404c8fe0cd4bfe87842fef7914051980635f10"
+
+
+print "Bug 3: This solution is easy!"
+
+if ((16 % 4) / (3 * 9) == read) print "Yeah this is fine"
+else exit
+reghash
+print "Correct: fc4f02f7105e7c5d2bda7b1c3d5365b281bf6af5fda48590938beb7ec7878a4c"
+
+
+print "Bug 4: There's only one way to solve this"
+
+if (1+1-1+1-1+1-1+1-1+1-1+1-1-read == 1) print "Looks good?"
+else exit
+reghash
+print "Correct: 163065ad9cce36d9c6b8f9aee1542e7ebd44e92b166a994b31fed3eb41d59f40"
+
+
+print "Bug 5: Test it again, to make sure! (psst. input 8 to make the reghash match)"
+
+if (read + 5 >= 7)
+	if (69 - 33 == 36) print "True True"
+	else print "Hold on, go back!"
+else print "Defenitely didn't use 8 ... Have a failed reghash then!"
+reghash
+print "Correct: f461c1766a6b85b7c27879b059b7f0f38f5a8a7fae40b4621f03da4a79c02301"
+
+
+print "The end! Or is it?"
+mangle
