@@ -1,0 +1,31 @@
+version: '3'
+
+services:
+  main_app:
+    build: .
+    environment:
+      SQLTUT_PORT: 80
+      SQLTUT_HOST: "0.0.0.0"
+      SQLTUT_DBURI: "mysql://branko:22b319a4880b353aa9659be58660241f9@database/database"
+      # NE DALJSA OD 10!!
+      SQLTUT_HASHING_SECRET: v3s01jc7
+    ports:
+      - "8088:80"
+      - "9229:9229"
+    volumes:
+      - C:\\ctf\\dctf2022\\DCTF-2022\\challs\\sqltutor:/usr/src/app
+    command: npm run dev
+
+  database:
+    image: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: "c76b525e53f3b9204222b319a4880b353aa9659be58660241f9d17a16cac7b38"
+      MYSQL_USER: branko
+      MYSQL_PASSWORD: 22b319a4880b353aa9659be58660241f9
+      MYSQL_DATABASE: database
+    volumes:
+      - ./mysql/exec:/docker-entrypoint-initdb.d
+      - ./mysql/database:/var/lib/mysql
+    ports:
+      - 3316:3306
+      - 33160:33060

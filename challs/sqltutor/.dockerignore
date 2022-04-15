@@ -1,0 +1,7 @@
+node_modules
+.env
+docker-compose*
+mysql
+sol*
+venv
+.vscode

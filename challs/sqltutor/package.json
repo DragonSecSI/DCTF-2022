@@ -1,0 +1,24 @@
+{
+    "name": "sqltutor",
+    "version": "1.0.0",
+    "description": "DCTF 2022 - SQL Tutor",
+    "main": "server.js",
+    "scripts": {
+        "dev": "NODE_ENV=development nodemon --inspect=0.0.0.0:9229 src/server.js",
+        "start": "node src/server.js"
+    },
+    "author": "aljazmedic",
+    "license": "ISC",
+    "dependencies": {
+        "express": "^4.17.3",
+        "helmet": "^5.0.2",
+        "morgan": "^1.10.0",
+        "mysql2": "^2.3.3",
+        "pug": "^3.0.2"
+    },
+    "devDependencies": {
+        "dotenv": "^16.0.0",
+        "jquery": "^3.6.0",
+        "nodemon": "^2.0.15"
+    }
+}
