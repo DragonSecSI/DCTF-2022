@@ -13,7 +13,7 @@ type: "standard"
 files:
   - "chall/challenge.tar.gz"
 flags:
-  - "DCTF{R4c3c0nd1t1ons_4r3_fun}"
+  - "dctf{R4c3c0nd1t1ons_4r3_fun}"
 tags:
   - "pwn"
   - "kernel"

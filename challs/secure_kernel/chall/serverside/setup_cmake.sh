@@ -8,4 +8,4 @@ BUILD_DIR="${BUILD_DIR:-${DEFAULT_DIR}}"
 cmake -B"${BUILD_DIR}" -H.
 
 cd build
-make -j
+make
