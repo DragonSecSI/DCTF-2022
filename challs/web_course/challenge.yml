@@ -4,14 +4,14 @@ category: "Web"
 connection_info: "https://web-course.dctf.si"
 
 description: |
-  mongo makes me go mongo
+  mongo makes me go mongo 
 value: 300
 type: "standard"
 
 files:
   - "source.zip"
 flags:
-  - "dctf{th1s_W3b_Is_ki11iNg_MEE}"
+  - "dctf{oNE_4_THe_Stud3ntssss}"
 tags:
   - "web"
 
