@@ -6,8 +6,11 @@ description: |
   Well unlike some would believe we dont really have control over dragons. A few days ago one of them stole one of our flags. Can you raid his lair and retrieve the flag?
 
   Author: Pixel#1111  
-value: 300
-type: standard
+type: "dynamic"
+extra:
+    initial: 500
+    decay: 200
+    minimum: 50
 
 files:
   - src.py

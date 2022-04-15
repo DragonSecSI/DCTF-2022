@@ -6,8 +6,11 @@ category: "PWN"
 description: |
   So... Where the hooks gone?
 
-value: 400
-type: "standard"
+type: "dynamic"
+extra:
+    initial: 500
+    decay: 200
+    minimum: 50
 
 files:
   - "Dockerfile_server"

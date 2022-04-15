@@ -5,8 +5,11 @@ connection_info: "nc pwn.dctf.si 13373"
 
 description: |
   This is Codechain's older brother, Codechainz
-value: 400
-type: "standard"
+type: "dynamic"
+extra:
+    initial: 500
+    decay: 200
+    minimum: 50
 
 files:
   - "chall/app"

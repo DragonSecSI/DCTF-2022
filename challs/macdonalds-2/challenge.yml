@@ -9,8 +9,11 @@ description: |
   
   The initialization vector is now random, and you can only generate tags for
   messages that are one block long. Can you still create a forgery?
-value: 50
-type: "standard"
+type: "dynamic"
+extra:
+    initial: 500
+    decay: 200
+    minimum: 50
 connection_info: "nc pwn.dragonsec.si 13371"
 
 files:

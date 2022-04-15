@@ -4,8 +4,11 @@ category: "PWN"
 
 description: |
   The oposite of inception is extraction.
-value: 100
-type: "standard"
+type: "dynamic"
+extra:
+    initial: 500
+    decay: 200
+    minimum: 50
 
 files:
   - "chall/app"

@@ -10,8 +10,11 @@ description: |
 
   The first item on the menu is CBC-MAC. Do you think you can create
   a forgery?
-value: 50
-type: "standard"
+type: "dynamic"
+extra:
+    initial: 500
+    decay: 200
+    minimum: 50
 connection_info: "nc pwn.dragonsec.si 13370"
 
 files:

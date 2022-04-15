@@ -5,8 +5,11 @@ category: "Web"
 description: |
     Web developer left the company becouse he was not being paid.
     He left some hidden features for him, to bypass security. Can you find the vunerability?
-value: 200 
-type: "standard"
+type: "dynamic"
+extra:
+    initial: 500
+    decay: 200
+    minimum: 50
 
 files:
   - ./book_store/book_store.jar

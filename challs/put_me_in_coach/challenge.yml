@@ -4,8 +4,11 @@ category: Crypto
 
 description: |
   I've seen this kind of encryption before, but the script isn't working. What's wrong with it? This isn't standard.
-value: 500
-type: standard
+type: "dynamic"
+extra:
+    initial: 500
+    decay: 200
+    minimum: 50
 
 files:
   - serve/put_me_in_coach.py

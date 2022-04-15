@@ -5,8 +5,11 @@ category: "PWN"
 description: |
   Why protect your userspace when you can just store your flag in the kernel? 
   I even tell you where it is!
-value: 400
-type: "standard"
+type: "dynamic"
+extra:
+    initial: 500
+    decay: 200
+    minimum: 50
 
 files:
   - "chall/challenge.tar.gz"

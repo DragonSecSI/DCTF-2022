@@ -4,8 +4,11 @@ category: "Misc"
 
 description: |
   Our company now upgraded to secure cards, but I think they forgot to set something...
-value: 500
-type: "standard"
+type: "dynamic"
+extra:
+    initial: 500
+    decay: 200
+    minimum: 50
 
 files:
   - "chall/card.trace"

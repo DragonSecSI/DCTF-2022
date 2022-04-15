@@ -4,8 +4,11 @@ category: "Crypto"
 
 description: 
   Can you forge a signature from the old signatures?
-value: 500
-type: "crypto"
+type: "dynamic"
+extra:
+    initial: 500
+    decay: 200
+    minimum: 50
 
 files:
   - "chall/algebraic.py"

@@ -4,8 +4,11 @@ category: "REV"
 
 description: |
   In this day and age, software writes sotftware... but humas still write software that writes software. 
-value: 400
-type: "standard"
+type: "dynamic"
+extra:
+    initial: 500
+    decay: 200
+    minimum: 50
 
 files:
   - "chall/glade"
