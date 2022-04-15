@@ -6,7 +6,7 @@ service key_recovery
     wait        = no
     user        = ctf
     type        = UNLISTED
-    port        = 8888
+    port        = 1337
     bind        = 0.0.0.0
     server      = /bin/sh
     server_args = /ctf/safe_space.sh

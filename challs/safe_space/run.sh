@@ -1,2 +1,2 @@
 #!/bin/bash
-docker run -dp 8888:8888 safe_space
+docker run -dp 1337:1337 safe_space

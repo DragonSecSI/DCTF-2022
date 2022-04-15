@@ -20,4 +20,4 @@ RUN chown -R root:ctf /ctf && \
 ENTRYPOINT []
 CMD ["/usr/sbin/xinetd", "-dontfork"]
 
-EXPOSE 8888
+EXPOSE 1337
