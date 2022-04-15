@@ -1,0 +1,18 @@
+name: "Shellstraction"
+author: "AlwaysGuilty"
+category: "PWN"
+
+description: |
+  The oposite of inception is extraction.
+value: 100
+type: "standard"
+
+files:
+  - "chall/app"
+flags:
+  - "dctf{D035_4nyb0dy_l1st3n_T0_Ur14h_He4p_1093875hv914387v}"
+tags:
+  - "pwn"
+
+state: "visible"
+version: "0.1"

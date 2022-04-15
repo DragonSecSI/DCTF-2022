@@ -1,18 +1,19 @@
 name: "correcthorsebatterystaple"
-author: "mirren"
+author: "DragonSec"
 category: "Crypto"
-connection_info: "nc pwn.dctf.si 13374"
 
 description: |
   I found a cool encoding for my secret passwords! 
-value: 300
+value: 100
 type: "standard"
 
 files:
+  - "chall/app"
 flags:
-  - "dctf{RelativeDistanceCoolEncoding}"
+  - "DCTF{RelativeDistanceCoolEncoding}"
 tags:
   - "crypto"
+  - "misc"
 
 state: "visible"
 version: "0.1"

@@ -1,0 +1,19 @@
+name: "Secure Creds"
+author: "Pixel"
+category: "Forensics"
+
+description: |
+  With the connection to the victim's computer you managed to dump the lsass.exe process. Can you get the password from the dump file?
+value: 100
+type: "standard"
+
+files:
+  - "chall/lsass.zip"
+flags:
+  - "dctf{n0_ant1v1ru5_l0l}"
+tags:
+  - "forensics"
+  - "lsass"
+
+state: "visible"
+version: "1.0"

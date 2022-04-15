@@ -1,0 +1,22 @@
+name: "Put me in coach"
+author: "zeski"
+category: Crypto
+
+description: |
+  I've seen this kind of encryption before, but the script isn't working. What's wrong with it? This isn't standard.
+value: 500
+type: standard
+
+files:
+  - serve/put_me_in_coach.py
+  - serve/ct.txt
+
+flags:
+  - dctf{ctfs_would_be_boring_without_some_classical_ciphers}
+
+tags:
+  - crypto
+
+state: visible
+
+version: "0.1"
