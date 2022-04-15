@@ -91,16 +91,21 @@ if __name__ == '__main__':
     resource = ''.join(choice(ascii_lowercase) for _ in range(12))
     print("Proof of work:")
     print("hashcash -mb{} -r {}".format(POW_BITS, resource))
-    proof = input("stamp: ")
+    try:
+        proof = input("stamp: ")
+    except EOFError:
+        sys.exit(0)
 
     if not check(proof, resource=resource, bits=POW_BITS):
         print("failed.")
-        sys.exit(0)
+        # sys.exit(0)
     
 
-
-    code = input("Please give me the base64encoded exploit.c: ")
-
+    try:
+        code = input("Please give me the base64encoded exploit.c: ")
+    except EOFError:
+        print("no input provided")
+        sys.exit(0)
 
     try:
         decoded = base64.b64decode(code).decode("ascii")
@@ -110,13 +115,14 @@ if __name__ == '__main__':
         print("input must be base64 decoding to valid ascii")
         sys.exit(0)
 
+    sys.stdout.flush()
     with tempfile.TemporaryDirectory() as tempdirname:
         shutil.copytree("/serverside", tempdirname, dirs_exist_ok=True)
         os.chdir(tempdirname)
         with open("userspace/tests/exploit.c", "w") as f:
             f.write(decoded)
         print("Building...")
-        subprocess.run("./setup_cmake.sh", stdout=subprocess.DEVNULL)
+        subprocess.run("./setup_cmake.sh")
         os.chdir("build")
         try:
             subprocess.run(["qemu-system-x86_64", "-m", "8M", "-nographic", "-monitor", "null", "-serial", "null", "-drive", "file=SWEB.qcow2,index=0,media=disk", "-debugcon", "stdio", "-no-reboot", "-cpu", "qemu64"], timeout=20)

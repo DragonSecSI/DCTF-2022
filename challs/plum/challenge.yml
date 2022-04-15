@@ -5,11 +5,8 @@ category: "Rev"
 description: |
   We really suck at making compilers ...
   Could you fix this one up for us?
-type: "dynamic"
-extra:
-    initial: 500
-    decay: 200
-    minimum: 50
+value: 500
+type: "standard"
 
 files:
   - "chall/compiler/compiler"

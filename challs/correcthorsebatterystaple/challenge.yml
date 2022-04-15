@@ -5,14 +5,10 @@ category: "Crypto"
 description: |
   I found a cool encoding for my secret passwords! 
   ```nc 51.124.222.205 13378```
-type: "dynamic"
-extra:
-    initial: 500
-    decay: 200
-    minimum: 50
+value: 200
+type: "standard"
 
 files:
-  - "chall/app"
 flags:
   - "DCTF{RelativeDistanceCoolEncoding}"
 tags:

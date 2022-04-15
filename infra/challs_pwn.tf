@@ -207,7 +207,7 @@ module "dctf_chall_pwn_secure_kernel" {
 }
 
 module "dctf_chall_pwn_algebraic" {
-  source = "./modules/challs/gcp/pwn/"
+  source = "./modules/challs/gcp/pwn_root/"
 
   name = "algebraic"
   ip   = azurerm_public_ip.challs_pwn.ip_address

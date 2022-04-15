@@ -5,11 +5,8 @@ category: "Web"
 description: |
   I found this awesome site for learning SQL. Check it out!
   ```http://sqltutor.dragonsec.si```
-type: "dynamic"
-extra:
-    initial: 500
-    decay: 200
-    minimum: 50
+value: 200
+type: "standard"
 
 flags:
   - "dctf{Pump_7h3_s7r3am_h4s5_up!_353aa965}"

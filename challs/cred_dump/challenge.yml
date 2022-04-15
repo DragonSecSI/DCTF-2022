@@ -6,11 +6,8 @@ description: |
   With the connection to the victim's computer you managed to dump the lsass.exe process. Can you get the password from the dump file?
   
   Author: Pixel#1111
-type: "dynamic"
-extra:
-    initial: 500
-    decay: 200
-    minimum: 50
+value: 100
+type: "standard"
 
 files:
   - "chall/lsass.zip"

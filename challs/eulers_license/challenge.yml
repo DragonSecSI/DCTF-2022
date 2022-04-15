@@ -7,11 +7,8 @@ description: |
   The server ofcourse is meant to run on linux, and the client on Windows.
   ```http://euler.dragonsec.si```
 
-type: "dynamic"
-extra:
-    initial: 500
-    decay: 200
-    minimum: 50
+value: 200
+type: "standard"
 
 files:
   - "eulers_license.ps1"

@@ -4,11 +4,8 @@ category: "Misc"
 
 description: |
   The flag is in format dctf{7_4_2_3_7_4} where numbers represent number of characters between underscores.
-type: "dynamic"
-extra:
-    initial: 500
-    decay: 200
-    minimum: 50
+value: 300
+type: "standard"
 
 files:
   - "chall/cfg.zip"

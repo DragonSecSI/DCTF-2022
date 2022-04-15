@@ -7,11 +7,8 @@ description: |
   Flag is in two parts.
 
   Author: Pixel#1111
-type: "dynamic"
-extra:
-    initial: 500
-    decay: 200
-    minimum: 50
+value: 200
+type: "standard"
 
 files:
   - "Firefox.zip"
