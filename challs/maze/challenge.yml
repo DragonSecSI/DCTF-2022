@@ -1,0 +1,20 @@
+name: "Glade"
+author: "zen"
+category: "REV"
+
+description: |
+  In this day and age, software writes sotftware... but humas still write software that writes software. 
+value: 400
+type: "standard"
+
+files:
+  - "chall/glade"
+flags:
+  - "dctf{r3m3mb3r_w1ck3d_1s_g00d_19092014}"
+tags:
+  - "rev"
+
+state: "visible"
+version: "0.1"
+
+ops:

@@ -1,0 +1,7 @@
+glade binary runna na serverju & damo jim ta compiled binary as well.
+called je cat flag.txt, zato se flag.txt zraven.
+
+sol: RRDLDLDRDRRRURURDDRDDDLULDLDLDDDDDDDDDRRRDRDRRURRURRURRRUURDDDDDDRRDRURURRRDDRRURRDDDDDRDLDDDR
+
+just in case je zraven še source generator _py in source, compilation: gcc glade.c -O0 -s -o glade
+ce je kdo radoveden
