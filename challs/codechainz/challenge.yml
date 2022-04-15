@@ -6,8 +6,12 @@ connection_info: "nc pwn.dctf.si 13373"
 description: |
   This is Codechain's older brother, Codechainz
   ```nc 51.124.222.205 13370```
-value: 400
-type: "standard"
+
+type: "dynamic"
+extra:
+    initial: 500
+    decay: 200
+    minimum: 50
 
 files:
   - "chall/app"

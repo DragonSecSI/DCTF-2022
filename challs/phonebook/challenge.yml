@@ -5,8 +5,12 @@ category: "PWN"
 description: |
         Exclusive "limited" edition to fit any pocket
         ```nc 51.124.222.205 13380```
-value: 100
-type: "standard"
+
+type: "dynamic"
+extra:
+    initial: 500
+    decay: 200
+    minimum: 50
 
 files:
   - "./phonebook.zip"

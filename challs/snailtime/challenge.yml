@@ -5,8 +5,12 @@ category: Crypto
 description: |
   I swear this thing can't run any faster. Please don't kill our infra.
   ```nc 51.124.222.205 13374```
-value: 500
-type: standard
+
+type: "dynamic"
+extra:
+    initial: 500
+    decay: 200
+    minimum: 50
 
 files:
   - src/snailtime.py

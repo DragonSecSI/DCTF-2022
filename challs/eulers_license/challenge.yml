@@ -6,8 +6,12 @@ description: |
   Someone who doesn't care about bandwidth usage decided to package both the server and client binaries in a single file...
   The server ofcourse is meant to run on linux, and the client on Windows.
   ```http://euler.dragonsec.si```
-value: 400
-type: "standard"
+
+type: "dynamic"
+extra:
+    initial: 500
+    decay: 200
+    minimum: 50
 
 files:
   - "eulers_license.ps1"

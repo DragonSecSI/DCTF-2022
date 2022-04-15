@@ -7,8 +7,12 @@ description: |
   Those things can't be too complicated, right?
   Only I know the password that unlocks the vault with the flag.
   ```nc 51.124.222.205 13381```
-value: 100
-type: "standard"
+
+type: "dynamic"
+extra:
+    initial: 500
+    decay: 200
+    minimum: 50
 
 files:
   - "chall/challenge.tar.gz"

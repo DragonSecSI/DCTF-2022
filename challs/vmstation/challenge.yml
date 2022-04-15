@@ -7,8 +7,11 @@ description: |
   So... Where the hooks gone?
   ```nc 51.124.222.205 13375```
 
-value: 400
-type: "standard"
+type: "dynamic"
+extra:
+    initial: 500
+    decay: 200
+    minimum: 50
 
 files:
   - "Dockerfile_server"

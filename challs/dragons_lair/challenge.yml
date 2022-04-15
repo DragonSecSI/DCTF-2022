@@ -4,9 +4,12 @@ category: Misc
 
 description: |
   Well unlike some would believe we dont really have control over dragons. A few days ago one of them stole one of our flags. Can you raid his lair and retrieve the flag?
-  ```nc 51.124.222.205 13377  ```
-value: 300
-type: standard
+  ```nc 51.124.222.205 13377  ``` 
+type: "dynamic"
+extra:
+    initial: 500
+    decay: 200
+    minimum: 50
 
 files:
   - src.py

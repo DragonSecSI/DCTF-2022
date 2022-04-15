@@ -5,8 +5,12 @@ category: Crypto
 description: |
   I got bored and made a new block cipher, but someone stole my flag and now i need to break it to get it back. Will you help me?
   ```nc 51.124.222.205 13371```
-value: 500
-type: standard
+
+type: "dynamic"
+extra:
+    initial: 500
+    decay: 200
+    minimum: 50
 
 files:
   - src/key_recovery.py

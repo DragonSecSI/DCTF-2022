@@ -5,8 +5,11 @@ category: "Crypto"
 description: |
   I found a cool encoding for my secret passwords! 
   ```nc 51.124.222.205 13378```
-value: 100
-type: "standard"
+type: "dynamic"
+extra:
+    initial: 500
+    decay: 200
+    minimum: 50
 
 files:
   - "chall/app"

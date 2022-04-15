@@ -10,9 +10,11 @@ description: |
   The initialization vector is now random, and you can only generate tags for
   messages that are one block long. Can you still create a forgery?
   ```nc 51.124.222.205 13373```
-value: 50
-type: "standard"
-connection_info: "nc pwn.dragonsec.si 13371"
+type: "dynamic"
+extra:
+    initial: 500
+    decay: 200
+    minimum: 50
 
 files:
   - "chall/challenger.py"

@@ -6,8 +6,12 @@ description: |
   Why protect your userspace when you can just store your flag in the kernel? 
   I even tell you where it is!
   ```nc 51.124.222.205 13382```
-value: 400
-type: "standard"
+
+type: "dynamic"
+extra:
+    initial: 500
+    decay: 200
+    minimum: 50
 
 files:
   - "chall/challenge.tar.gz"
