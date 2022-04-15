@@ -79,7 +79,7 @@ module "dctf_chall_pwn_snailtime" {
 }
 
 module "dctf_chall_pwn_vmstation" {
-  source = "./modules/challs/gcp/pwn/"
+  source = "./modules/challs/gcp/pwn_root/"
 
   name = "vmstation"
   ip   = azurerm_public_ip.challs_pwn.ip_address
@@ -191,7 +191,7 @@ module "dctf_chall_pwn_shitty_tpm" {
 }
 
 module "dctf_chall_pwn_secure_kernel" {
-  source = "./modules/challs/gcp/pwn/"
+  source = "./modules/challs/gcp/pwn_mem/"
 
   name = "secure-kernel"
   ip   = azurerm_public_ip.challs_pwn.ip_address
