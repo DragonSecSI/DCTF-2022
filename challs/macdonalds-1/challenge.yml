@@ -10,6 +10,7 @@ description: |
 
   The first item on the menu is CBC-MAC. Do you think you can create
   a forgery?
+  ```nc 51.124.222.205 13372```
 value: 50
 type: "standard"
 connection_info: "nc pwn.dragonsec.si 13370"

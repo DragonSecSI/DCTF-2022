@@ -5,6 +5,7 @@ connection_info: "nc pwn.dctf.si 13373"
 
 description: |
   This is Codechain's older brother, Codechainz
+  ```nc 51.124.222.205 13370```
 value: 400
 type: "standard"
 

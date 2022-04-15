@@ -4,6 +4,7 @@ category: "PWN"
 
 description: |
         Exclusive "limited" edition to fit any pocket
+        ```nc 51.124.222.205 13380```
 value: 100
 type: "standard"
 

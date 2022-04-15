@@ -5,6 +5,7 @@ category: "PWN"
 
 description: |
   So... Where the hooks gone?
+  ```nc 51.124.222.205 13375```
 
 value: 400
 type: "standard"

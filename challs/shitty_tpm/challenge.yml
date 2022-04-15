@@ -6,6 +6,7 @@ description: |
   I can't install Windows 11 because I have no TPM, so i decided to make my own.
   Those things can't be too complicated, right?
   Only I know the password that unlocks the vault with the flag.
+  ```nc 51.124.222.205 13381```
 value: 100
 type: "standard"
 

@@ -5,6 +5,7 @@ category: "Web"
 description: |
     Web developer left the company becouse he was not being paid.
     He left some hidden features for him, to bypass security. Can you find the vunerability?
+    ```http://book-store.dragonsec.si```
 value: 200 
 type: "standard"
 

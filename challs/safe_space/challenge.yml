@@ -4,8 +4,7 @@ category: Misc
 
 description: |
   All this talk about security, so I hid my flag in my safe space. Well the least I can do is let you use my console...
-
-  Author: Pixel#1111
+  ```nc 51.124.222.205 13379```
 value: 150
 type: standard
 

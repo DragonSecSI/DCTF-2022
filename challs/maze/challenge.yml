@@ -4,6 +4,7 @@ category: "REV"
 
 description: |
   In this day and age, software writes sotftware... but humas still write software that writes software. 
+  ```nc 51.124.222.205 13376```
 value: 400
 type: "standard"
 
