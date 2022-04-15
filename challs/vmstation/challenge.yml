@@ -7,11 +7,8 @@ description: |
   So... Where the hooks gone?
   ```nc 51.124.222.205 13375```
 
-type: "dynamic"
-extra:
-    initial: 500
-    decay: 200
-    minimum: 50
+value: 500
+type: "standard"
 
 files:
   - "Dockerfile_server"
@@ -22,7 +19,7 @@ flags:
 tags:
   - "pwn"
 
-state: "visible"
+state: "hidden"
 version: "0.1"
 
 ops:

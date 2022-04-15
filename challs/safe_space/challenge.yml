@@ -6,11 +6,8 @@ description: |
   All this talk about security, so I hid my flag in my safe space. Well the least I can do is let you use my console...
   ```nc 51.124.222.205 13379```
 
-type: "dynamic"
-extra:
-    initial: 500
-    decay: 200
-    minimum: 50
+value: 100
+type: "standard"
 
 files:
 
@@ -21,6 +18,6 @@ tags:
   - python
   - misc
 
-state: visible
+state: hidden
 
 version: "0.1"

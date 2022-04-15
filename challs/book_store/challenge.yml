@@ -7,11 +7,8 @@ description: |
     He left some hidden features for him, to bypass security. Can you find the vunerability?
     ```http://book-store.dragonsec.si```
 
-type: "dynamic"
-extra:
-    initial: 500
-    decay: 200
-    minimum: 50
+value: 200
+type: "standard"
 
 files:
   - ./book_store/book_store.jar

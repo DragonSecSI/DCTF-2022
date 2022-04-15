@@ -10,11 +10,8 @@ description: |
   The initialization vector is now random, and you can only generate tags for
   messages that are one block long. Can you still create a forgery?
   ```nc 51.124.222.205 13373```
-type: "dynamic"
-extra:
-    initial: 500
-    decay: 200
-    minimum: 50
+value: 300
+type: "standard"
 
 files:
   - "chall/challenger.py"

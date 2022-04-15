@@ -7,11 +7,8 @@ description: |
   I even tell you where it is!
   ```nc 51.124.222.205 13382```
 
-type: "dynamic"
-extra:
-    initial: 500
-    decay: 200
-    minimum: 50
+value: 500
+type: "standard"
 
 files:
   - "chall/challenge.tar.gz"
@@ -21,7 +18,7 @@ tags:
   - "pwn"
   - "kernel"
 
-state: "visible"
+state: "hidden"
 version: "1.0"
 
 

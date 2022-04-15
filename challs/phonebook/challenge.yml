@@ -6,11 +6,8 @@ description: |
         Exclusive "limited" edition to fit any pocket
         ```nc 51.124.222.205 13380```
 
-type: "dynamic"
-extra:
-    initial: 500
-    decay: 200
-    minimum: 50
+value: 300
+type: "standard"
 
 files:
   - "./phonebook.zip"
