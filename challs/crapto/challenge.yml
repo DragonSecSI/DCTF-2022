@@ -4,11 +4,8 @@ category: "Misc"
 
 description: |
   I touched my keyfob for free bubblegum and they stole my flag :(
-type: "dynamic"
-extra:
-    initial: 500
-    decay: 200
-    minimum: 50
+value: 300
+type: "standard"
 
 files:
   - "chall/keyfob.trace"

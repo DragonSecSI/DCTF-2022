@@ -5,11 +5,8 @@ category: "Crypto"
 description: 
   Can you forge a signature from the old signatures?
   ```nc 51.124.222.205 13383```
-type: "dynamic"
-extra:
-    initial: 500
-    decay: 200
-    minimum: 50
+value: 500
+type: "standard"
 
 files:
   - "chall/algebraic.py"
@@ -20,6 +17,6 @@ tags:
   - "crypto"
   - "ECC"
 
-state: "visible"
+state: "hidden"
 version: "1.0"
 

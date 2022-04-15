@@ -7,21 +7,18 @@ description: |
   I even tell you where it is!
   ```nc 51.124.222.205 13382```
 
-type: "dynamic"
-extra:
-    initial: 500
-    decay: 200
-    minimum: 50
+value: 500
+type: "standard"
 
 files:
   - "chall/challenge.tar.gz"
 flags:
-  - "DCTF{R4c3c0nd1t1ons_4r3_fun}"
+  - "dctf{R4c3c0nd1t1ons_4r3_fun}"
 tags:
   - "pwn"
   - "kernel"
 
-state: "visible"
+state: "hidden"
 version: "1.0"
 
 

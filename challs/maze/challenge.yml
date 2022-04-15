@@ -1,16 +1,13 @@
 name: "Glade"
 author: "zen"
-category: "REV"
+category: "Rev"
 
 description: |
   In this day and age, software writes sotftware... but humas still write software that writes software. 
   ```nc 51.124.222.205 13376```
 
-type: "dynamic"
-extra:
-    initial: 500
-    decay: 200
-    minimum: 50
+value: 400
+type: "standard"
 
 files:
   - "chall/glade"

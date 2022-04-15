@@ -5,11 +5,8 @@ category: "Misc"
 description: |
   A whistleblower from Best Company Ever inc. sent us this corrupt file that may be containing incriminating data.
   Help him find the proof of company's evil plans!
-type: "dynamic"
-extra:
-    initial: 500
-    decay: 200
-    minimum: 50
+value: 200
+type: "standard"
 
 files:
   - "chall/nothing.jpg"

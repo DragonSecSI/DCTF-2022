@@ -4,11 +4,8 @@ category: "Rev"
 
 description: |
   Flag format DCTF{...}.
-type: "dynamic"
-extra:
-    initial: 500
-    decay: 200
-    minimum: 50
+value: 200
+type: "standard"
 
 files:
   - "chall/ready.exe"

@@ -11,6 +11,6 @@ COPY chall/run.py /
 
 RUN chmod 555 /run.py
 
-CMD socat -T 30 \
+CMD socat -T 300 \
     TCP-LISTEN:1337,nodelay,reuseaddr,fork \
     EXEC:"stdbuf -i0 -o0 -e0 python3 /run.py"
