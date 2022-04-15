@@ -1,0 +1,257 @@
+<html>
+  <head>
+    <title>Book Landing Page</title>
+    <link href="https://fonts.googleapis.com/css?family=Ovo|Source+Sans+Pro:300|Crimson+Text" rel="stylesheet">
+    <style media="screen" >
+
+$bubble-start-opacity: 0.3;
+
+html { 
+  font-size: calc(1em + 1vw); 
+}
+
+.footer-text {
+  font-size: 66%;
+  text-align: center;
+}
+body {
+  background: #14304B;
+  background: linear-gradient(to bottom, #0D2032, #080710); 
+  background: -webkit-linear-gradient(to bottom, #0D2032, #080710); 
+  color: white;
+  font-family: serif;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Ovo', serif;
+}
+
+.blurb {
+  text-align: justify; margin: 2em;
+}
+
+  @media only screen and (max-width: 40.063em) {
+    .book-cover {
+      float: none;
+      margin-right: 0;
+    } 
+  }
+
+  p {
+    line-height: 1.5rem;
+    text-align: justify;
+  }
+
+  #container { 
+    padding-top: 8em;
+    max-width: 650px; 
+    margin: 0 auto; 
+  }
+
+  @media screen and (min-width: 50em) {
+    html {
+      font-size: 1.5em;
+    }
+
+  } 
+
+  #bubbles { 
+    height: 100%; 
+    top: 0;
+    z-index: 100;
+    position: absolute;
+
+    padding: 100px 0 }
+.bubble {
+  width: 60px;
+  height: 60px;
+  background: #dfdfdf;
+  border-radius: 200px;
+  -moz-border-radius: 200px;
+  -webkit-border-radius: 200px;
+  position: absolute;
+}
+
+.x1 {
+  background: #afafaf;
+  left: 10vw;
+  -webkit-transform: scale(0.9);
+  -moz-transform: scale(0.9);
+  transform: scale(0.9);
+  opacity: $bubble-start-opacity+.1;
+  -webkit-animation: moveclouds 5s linear infinite, sideWays 4s ease-in-out infinite alternate;
+  -moz-animation: moveclouds 5s linear infinite, sideWays 4s ease-in-out infinite alternate;
+  -o-animation: moveclouds 5s linear infinite, sideWays 4s ease-in-out infinite alternate;
+}
+
+.x2 {
+  background: #a0a0a0;
+  left: 22vw;
+  -webkit-transform: scale(0.6);
+  -moz-transform: scale(0.6);
+  transform: scale(0.6);
+  opacity: $bubble-start-opacity;
+  -webkit-animation: moveclouds 4s linear infinite, sideWays 5s ease-in-out infinite alternate;
+  -moz-animation: moveclouds 4s linear infinite, sideWays 5s ease-in-out infinite alternate;
+  -o-animation: moveclouds 4s linear infinite, sideWays 5s ease-in-out infinite alternate;
+}
+.x3 {
+  left: 40vw;
+  -webkit-transform: scale(0.8);
+  -moz-transform: scale(0.8);
+  transform: scale(0.8);
+  opacity: $bubble-start-opacity;
+  -webkit-animation: moveclouds 3s linear infinite, sideWays 4s ease-in-out infinite alternate;
+  -moz-animation: moveclouds 3s linear infinite, sideWays 4s ease-in-out infinite alternate;
+  -o-animation: moveclouds 3s linear infinite, sideWays 4s ease-in-out infinite alternate;
+}
+.x4 {
+  left: 65vw;
+  -webkit-transform: scale(0.75);
+  -moz-transform: scale(0.75);
+  transform: scale(0.75);
+  opacity: $bubble-start-opacity;
+  -webkit-animation: moveclouds 4s linear infinite, sideWays 2s ease-in-out infinite alternate;
+  -moz-animation: moveclouds 4s linear infinite, sideWays 2s ease-in-out infinite alternate;
+  -o-animation: moveclouds 4s linear infinite, sideWays 2s ease-in-out infinite alternate;
+}
+.x5 {
+  left: 77vw;
+  -webkit-transform: scale(0.8);
+  -moz-transform: scale(0.8);
+  transform: scale(0.8);
+  opacity: $bubble-start-opacity; 
+  -webkit-animation: moveclouds 5s linear infinite, sideWays 1s ease-in-out infinite alternate;
+  -moz-animation: moveclouds 5s linear infinite, sideWays 1s ease-in-out infinite alternate;
+  -o-animation: moveclouds 5s linear infinite, sideWays 1s ease-in-out infinite alternate;
+}
+    @-webkit-keyframes moveclouds { 
+      0% { 
+        top: 100vh;
+        opacity: $bubble-start-opacity;
+      }
+      100% { 
+        top: 0vh;
+        opacity: 0;
+      }
+    }
+
+    @-webkit-keyframes sideWays { 
+      0% { 
+        margin-left:0vw;
+      }
+      100% { 
+        margin-left:2vw;
+      }
+    }
+
+    @-moz-keyframes moveclouds {     
+      0% { 
+        top: 100vh;
+        opacity: $bubble-start-opacity;
+      }
+      100% { 
+        top: 0vh;
+        opacity: 0;
+      }
+    }
+
+    @-moz-keyframes sideWays {
+      0% { 
+        margin-left:0vw;
+      }
+      100% { 
+        margin-left:2vw;
+      }
+    }
+    @-o-keyframes moveclouds {
+      0% { 
+        top: 100vh;
+        opacity: $bubble-start-opacity;
+      }
+      100% { 
+        top: 0vh;
+        opacity: 0;
+      }
+    }
+
+    @-o-keyframes sideWays {
+      0% { 
+        margin-left:0vw;
+      }
+      100% { 
+        margin-left:2vw;
+      }
+    }
+    </style>
+    <script>
+      const getCookie = (name) => {
+        var nameEQ = name + "=";
+        var ca = document.cookie.split(';');
+        for(var i=0;i < ca.length;i++) {
+          var c = ca[i];
+          while (c.charAt(0)==' ') c = c.substring(1,c.length);
+          if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+        }
+        return null;
+      }
+
+      const checkAuth = () => {
+        const auth = getCookie('auth');
+        if(auth != "sup3rs3cr3tC00ki3"){
+          const redirect_location = window.location.href;
+          window.location.href = redirect_location.substring(0, redirect_location.lastIndexOf('/')) + '/auth.html';
+        } else {
+          console.log("Successful auth!");
+          loadBook();
+        }
+      }
+
+      const loadBook = async () => {
+
+		const response = await fetch(`/book`, {
+			method: "POST",
+			headers: {'Content-Type': 'application/json'}, 
+		});
+
+		let data = await response.text();
+        data = JSON.parse(data);
+
+		if(!response.ok) {
+			console.error(response.status);
+			return;
+		} else {
+          data.forEach((paragraph) => {
+              const p = document.getElementById("p" + paragraph.id);
+              p.innerHTML = paragraph.paragraph;
+          }) 
+		}
+      }
+
+      window.onload = checkAuth;
+    </script>
+  </head>
+  <body>
+    <div id="container">
+      <h1 style="text-align: center">Hidden book, <br>unseen<br> on world wide web.</h1>
+
+      <p class="blurb" id="p1"></p>
+      <p class="blurb" id="p2"></p>
+      <p class="blurb" id="p3"></p>
+      <p class="blurb" id="p4"></p>
+      <p class="blurb" id="p5"></p>
+      <p class="blurb" id="p6"></p>
+      <p class="blurb" id="p7"></p>
+      <p class="blurb" id="p8"></p>
+    </div>
+    <p clas="footer-text">Copyright &copy; John ~ Talented book writer and text analyzer. <br/> All rights reserved.</p>
+    <div id="bubbles">
+      <div class="bubble x1"></div>
+      <div class="bubble x2"></div>
+      <div class="bubble x3"></div>
+      <div class="bubble x4"></div>
+      <div class="bubble x5"></div>
+    </div>
+  </body>
+</html>
+<!-- template from: https://codepen.io/lawsonry/pen/VdjOrr -->
