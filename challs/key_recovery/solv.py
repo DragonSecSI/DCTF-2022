@@ -2,7 +2,7 @@ import os
 from hashlib import sha512
 from pwn import *
 
-io = remote("localhost", 8888)
+io = remote("localhost", 1337)
 
 BS = 16
 R = 3
