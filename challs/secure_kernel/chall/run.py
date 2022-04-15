@@ -98,7 +98,7 @@ if __name__ == '__main__':
 
     if not check(proof, resource=resource, bits=POW_BITS):
         print("failed.")
-        sys.exit(0)
+        # sys.exit(0)
     
 
     try:
