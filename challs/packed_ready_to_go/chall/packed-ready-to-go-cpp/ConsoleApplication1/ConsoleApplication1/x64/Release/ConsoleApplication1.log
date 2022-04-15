@@ -1,0 +1,7 @@
+﻿  ConsoleApplication1.cpp
+  The contents of <filesystem> are available only with C++17 or later.
+  Generating code
+  Previous IPDB not found, fall back to full compilation.
+  All 102 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  ConsoleApplication1.vcxproj -> C:\Users\Trickster\Documents\dctf\packed-ready-to-go-cpp\ConsoleApplication1\x64\Release\ConsoleApplication1.exe

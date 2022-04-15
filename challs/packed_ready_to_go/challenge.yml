@@ -1,0 +1,20 @@
+name: "Packed and ready to go"
+author: "Xorpy"
+category: "Rev"
+
+description: |
+  Flag format DCTF{...}.
+value: 300
+type: "standard"
+
+files:
+  - "chall/ready.exe"
+flags:
+  - "DCTF{e7629216297d0a50d561239cea27645f}"
+tags:
+  - "rev"
+
+state: "visible"
+version: "0.1"
+
+ops:
