@@ -6,7 +6,7 @@ service snailtime
     wait        = no
     user        = ctf
     type        = UNLISTED
-    port        = 7777
+    port        = 1337
     bind        = 0.0.0.0
     server      = /bin/sh
     server_args = /ctf/snailtime.sh

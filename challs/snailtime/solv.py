@@ -4,8 +4,8 @@ import time
 
 N = 512
 
-io = process(["python3", "src/snailtime.py"])
-# io = remote("localhost", 7777)
+#io = process(["python3", "src/snailtime.py"])
+io = remote("localhost", 1337)
 
 
 def interact(op, n):
