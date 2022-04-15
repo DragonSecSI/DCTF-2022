@@ -122,7 +122,12 @@ if __name__ == '__main__':
         with open("userspace/tests/exploit.c", "w") as f:
             f.write(decoded)
         print("Building...")
-        subprocess.run("./setup_cmake.sh")
+        sys.stdout.flush()
+        maker = subprocess.run("./setup_cmake.sh", stdout=subprocess.DEVNULL)
+        if(maker.returncode != 0):
+            print("Build failed!")
+            sys.stdout.flush()
+            sys.exit(0)
         os.chdir("build")
         try:
             subprocess.run(["qemu-system-x86_64", "-m", "8M", "-nographic", "-monitor", "null", "-serial", "null", "-drive", "file=SWEB.qcow2,index=0,media=disk", "-debugcon", "stdio", "-no-reboot", "-cpu", "qemu64"], timeout=20)
