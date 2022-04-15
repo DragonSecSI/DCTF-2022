@@ -1,23 +1,16 @@
 FROM python:3
 
-RUN apt-get update && apt-get install -y \
-  xinetd \
-  && rm -rf /var/lib/apt/lists/*
-
-RUN mkdir /ctf
-WORKDIR /ctf
-RUN useradd -M -d /ctf ctf
-
-RUN echo "Connection blocked" > /etc/banner_fail
-COPY safe_space.xinetd /etc/xinetd.d/ctf
-COPY ./src /ctf/
-
-RUN chown -R root:ctf /ctf && \
-  chmod -R 750 /ctf && \
-  chmod 740 /ctf/flag.txt
-
-
-ENTRYPOINT []
-CMD ["/usr/sbin/xinetd", "-dontfork"]
+RUN apt-get -y update && \
+    apt-get -y install socat coreutils
 
 EXPOSE 1337
+
+COPY src/flag.txt /
+COPY src/safe_space.py /
+
+RUN chmod 555 /safe_space.py && \
+    chmod 444 /flag.txt
+
+CMD socat -T 30 \
+    TCP-LISTEN:1337,nodelay,reuseaddr,fork \
+    EXEC:"python3 safe_space.py"
