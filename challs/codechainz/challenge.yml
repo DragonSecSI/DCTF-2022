@@ -10,6 +10,7 @@ value: 100
 type: "standard"
 
 files:
+  - "Dockerfile"
   - "chall/app"
 flags:
   - "dctf{5h3_s31l5_s3e_5h3ll5_0n_7h3e_534_shur3_2nvc4t4204}"
