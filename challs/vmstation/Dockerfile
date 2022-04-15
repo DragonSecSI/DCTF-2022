@@ -7,17 +7,17 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     apt-get -y install socat coreutils libssl-dev gcc python3
 
 
-RUN mkdir /chall
+COPY chall/we_kind_thought_leaking_this_was_gonna_be_another_chall_flag.txt /
+COPY chall/wrapper.py /
+COPY chall/vm.c /
 
-COPY chall/we_kind_thought_leaking_this_was_gonna_be_another_chall_flag.txt /chall/
-COPY chall/wrapper.py /chall/
-COPY chall/vm.c /chall/
+RUN gcc /vm.c -o /vmstation -lcrypto -s && \
+    chmod 555 /vmstation && \
+    chmod 444 /we_kind_thought_leaking_this_was_gonna_be_another_chall_flag.txt 
 
-RUN gcc /chall/vm.c -o /chall/vmstation -lcrypto -s && \
-    chmod 555 /chall/vmstation && \
-    chmod 444 /chall/we_kind_thought_leaking_this_was_gonna_be_another_chall_flag.txt 
+RUN rm /vm.c
 
-WORKDIR /chall
+WORKDIR /
 CMD socat -T 30 \
     TCP-LISTEN:1337,nodelay,reuseaddr,fork \
-    EXEC:"stdbuf -i0 -o0 -e0 /usr/bin/python3 /chall/wrapper.py"
+    EXEC:"stdbuf -i0 -o0 -e0 /usr/bin/python3 /wrapper.py"

