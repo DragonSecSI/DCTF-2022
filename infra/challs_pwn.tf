@@ -31,7 +31,7 @@ module "dctf_chall_pwn_key_recovery" {
 }
 
 module "dctf_chall_pwn_macdonalds_1" {
-  source = "./modules/challs/gcp/pwn/"
+  source = "./modules/challs/gcp/pwn_mem/"
 
   name = "macdonalds-1"
   ip   = azurerm_public_ip.challs_pwn.ip_address
@@ -47,7 +47,7 @@ module "dctf_chall_pwn_macdonalds_1" {
 }
 
 module "dctf_chall_pwn_macdonalds_2" {
-  source = "./modules/challs/gcp/pwn/"
+  source = "./modules/challs/gcp/pwn_mem/"
 
   name = "macdonalds-2"
   ip   = azurerm_public_ip.challs_pwn.ip_address
@@ -63,7 +63,7 @@ module "dctf_chall_pwn_macdonalds_2" {
 }
 
 module "dctf_chall_pwn_snailtime" {
-  source = "./modules/challs/gcp/pwn_root/"
+  source = "./modules/challs/gcp/pwn_mem/"
 
   name = "snailtime"
   ip   = azurerm_public_ip.challs_pwn.ip_address

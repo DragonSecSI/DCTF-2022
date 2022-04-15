@@ -50,16 +50,16 @@ resource "kubernetes_deployment" "deployment" {
           image = "${var.k8s_image}"
           name  = "${var.name}"
 
-          security_context {
-            run_as_user     = 1337
-            run_as_group    = 1337
-            run_as_non_root = true
-            capabilities {
-              add = [
-                "NET_BIND_SERVICE",
-              ]
-            }
-          }
+          #security_context {
+          #  run_as_user     = 1337
+          #  run_as_group    = 1337
+          #  run_as_non_root = true
+          #  capabilities {
+          #    add = [
+          #      "NET_BIND_SERVICE",
+          #    ]
+          #  }
+          #}
 
           resources {
             limits = {
