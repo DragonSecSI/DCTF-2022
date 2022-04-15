@@ -5,6 +5,7 @@ category: "PWN"
 
 description: |
   So... Where the hooks gone?
+  Note: Container is running on ubuntu 18.04.6 LTS
   ```nc 51.124.222.205 13375```
 
 value: 500

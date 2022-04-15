@@ -4,7 +4,7 @@ category: Crypto
 
 description: |
   I swear this thing can't run any faster. Please don't kill our infra.
-  ```nc 51.124.222.205 13374```
+  ```nc 20.229.71.147 1339```
 
 value: 400
 type: "standard"
