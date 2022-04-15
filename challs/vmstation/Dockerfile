@@ -6,16 +6,16 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     apt-get -y update && \
     apt-get -y install socat coreutils libssl-dev gcc python3
 
-
+RUN mkdir /chall
 COPY chall/we_kind_thought_leaking_this_was_gonna_be_another_chall_flag.txt /
 COPY chall/wrapper.py /
-COPY chall/vm.c /
+COPY chall/vm.c /chall/
 
-RUN gcc /vm.c -o /vmstation -lcrypto -s && \
+RUN gcc /chall/vm.c -o /vmstation -lcrypto -s && \
     chmod 555 /vmstation && \
     chmod 444 /we_kind_thought_leaking_this_was_gonna_be_another_chall_flag.txt 
 
-RUN rm /vm.c
+RUN rm /chall/vm.c 
 
 WORKDIR /
 CMD socat -T 30 \
