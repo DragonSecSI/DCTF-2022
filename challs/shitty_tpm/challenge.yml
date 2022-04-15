@@ -12,7 +12,7 @@ type: "standard"
 files:
   - "chall/challenge.tar.gz"
 flags:
-  - "DCTF{K3y_ch0s3n_by_f4ir_d1c3_roll}"
+  - "dctf{K3y_ch0s3n_by_f4ir_d1c3_roll}"
 tags:
   - "rev"
   - "hardware"
