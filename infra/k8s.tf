@@ -43,6 +43,21 @@ resource "kubernetes_secret" "tls" {
   type = "kubernetes.io/tls"
 }
 
+resource "kubernetes_secret" "tls_gcp" {
+  metadata {
+    name = "tls"
+  }
+
+  data = {
+    "tls.crt" = module.acme_wildcard_certificate.certificate
+    "tls.key" = module.acme_wildcard_certificate.private_key
+  }
+
+  type = "kubernetes.io/tls"
+
+  provider = kubernetes.gcp
+}
+
 resource "kubernetes_secret" "dctf-root" {
   metadata {
     name = "dctf-root"
@@ -77,6 +92,19 @@ resource "kubernetes_secret" "registry_secret" {
 
   data = {
     ".dockerconfigjson" = var.azure_k8s_registry_secret
+  }
+
+  type = "kubernetes.io/dockerconfigjson"
+}
+
+resource "kubernetes_secret" "dctf_registry_secret" {
+  metadata {
+    name = "dctf-registry-secret"
+    namespace = var.azure_int_k8s_namespace
+  }
+
+  data = {
+    ".dockerconfigjson" = var.azure_int_k8s_registry_secret
   }
 
   type = "kubernetes.io/dockerconfigjson"

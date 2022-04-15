@@ -31,6 +31,12 @@ provider "azurerm" {
   tenant_id       = var.azure_tenant_id
 }
 
+provider "google" {
+  project     = "gothic-victor-347008"
+  region      = "europe-west3"
+  credentials = "./gcp.json"
+}
+
 provider "cloudflare" {
   email   = var.cloudflare_email
   api_key = var.cloudflare_api_key
@@ -49,6 +55,16 @@ provider "kubernetes" {
   cluster_ca_certificate = "${base64decode(azurerm_kubernetes_cluster.k8s.kube_config.0.cluster_ca_certificate)}"
 }
 
+provider "kubernetes" {
+  host                   = "https://${google_container_cluster.dctf.endpoint}"
+  token                  = data.google_client_config.provider.access_token
+  cluster_ca_certificate = base64decode(
+    google_container_cluster.dctf.master_auth[0].cluster_ca_certificate,
+  )
+
+  alias = "gcp"
+}
+
 provider "helm" {
   kubernetes {
     host                   = "${azurerm_kubernetes_cluster.k8s.kube_config.0.host}"
@@ -56,4 +72,16 @@ provider "helm" {
     client_key             = "${base64decode(azurerm_kubernetes_cluster.k8s.kube_config.0.client_key)}"
     cluster_ca_certificate = "${base64decode(azurerm_kubernetes_cluster.k8s.kube_config.0.cluster_ca_certificate)}"
   }
+}
+
+provider "helm" {
+  kubernetes {
+    host                   = "https://${google_container_cluster.dctf.endpoint}"
+    token                  = "${data.google_client_config.provider.access_token}"
+    client_certificate     = "${base64decode(google_container_cluster.dctf.master_auth[0].client_certificate)}"
+    client_key             = "${base64decode(google_container_cluster.dctf.master_auth[0].client_key)}"
+    cluster_ca_certificate = "${base64decode(google_container_cluster.dctf.master_auth[0].cluster_ca_certificate)}"
+  }
+
+  alias = "gcp"
 }

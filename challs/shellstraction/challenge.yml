@@ -14,5 +14,5 @@ flags:
 tags:
   - "pwn"
 
-state: "visible"
+state: "hidden"
 version: "0.1"

@@ -15,4 +15,3 @@ variable "k8s_image" {
   type = string
   nullable = false
 }
-

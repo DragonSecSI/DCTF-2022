@@ -1,77 +1,223 @@
-module "chall_pwn_print" {
-  source = "./modules/challs/pwn/"
-  count = var.dctfsi_challs_enabled ? 1 : 0
+module "dctf_chall_pwn_codechainz" {
+  source = "./modules/challs/gcp/pwn/"
 
-  name = "print"
+  name = "codechainz"
   ip   = azurerm_public_ip.challs_pwn.ip_address
   port = 13370
 
   k8s_namespace       = "default"
-  k8s_image           = "dctfsi.azurecr.io/challs/printf:latest"
-  k8s_registry_secret = kubernetes_secret.registry_secret.metadata.0.name
+  k8s_image           = "dctfint.azurecr.io/challs/codechainz:latest"
+  k8s_registry_secret = kubernetes_secret.dctf_registry_secret.metadata.0.name
+
+  providers = {
+    kubernetes.gcp = kubernetes
+  }
 }
 
-module "chall_pwn_where_is_my_flag" {
-  source = "./modules/challs/pwn/"
-  count = var.dctfsi_challs_enabled ? 1 : 0
+module "dctf_chall_pwn_key_recovery" {
+  source = "./modules/challs/gcp/pwn_root/"
 
-  name = "where-is-my-flag"
+  name = "key-recovery"
   ip   = azurerm_public_ip.challs_pwn.ip_address
   port = 13371
 
   k8s_namespace       = "default"
-  k8s_image           = "dctfsi.azurecr.io/challs/where-is-my-flag:latest"
-  k8s_registry_secret = kubernetes_secret.registry_secret.metadata.0.name
+  k8s_image           = "dctfint.azurecr.io/challs/key-recovery:latest"
+  k8s_registry_secret = kubernetes_secret.dctf_registry_secret.metadata.0.name
+
+  providers = {
+    kubernetes.gcp = kubernetes
+  }
 }
 
-module "chall_pwn_try_harder" {
-  source = "./modules/challs/pwn/"
-  count = var.dctfsi_challs_enabled ? 1 : 0
+module "dctf_chall_pwn_macdonalds_1" {
+  source = "./modules/challs/gcp/pwn/"
 
-  name = "try-harder"
+  name = "macdonalds-1"
   ip   = azurerm_public_ip.challs_pwn.ip_address
   port = 13372
 
   k8s_namespace       = "default"
-  k8s_image           = "dctfsi.azurecr.io/challs/try-harder:latest"
-  k8s_registry_secret = kubernetes_secret.registry_secret.metadata.0.name
+  k8s_image           = "dctfint.azurecr.io/challs/macdonalds-1:latest"
+  k8s_registry_secret = kubernetes_secret.dctf_registry_secret.metadata.0.name
+
+  providers = {
+    kubernetes.gcp = kubernetes
+  }
 }
 
-module "chall_pwn_codechainz" {
-  source = "./modules/challs/pwn/"
-  count = var.dctfsi_challs_enabled ? 1 : 0
+module "dctf_chall_pwn_macdonalds_2" {
+  source = "./modules/challs/gcp/pwn/"
 
-  name = "codechainz"
+  name = "macdonalds-2"
   ip   = azurerm_public_ip.challs_pwn.ip_address
   port = 13373
 
   k8s_namespace       = "default"
-  k8s_image           = "dctfsi.azurecr.io/challs/codechainz:latest"
-  k8s_registry_secret = kubernetes_secret.registry_secret.metadata.0.name
+  k8s_image           = "dctfint.azurecr.io/challs/macdonalds-2:latest"
+  k8s_registry_secret = kubernetes_secret.dctf_registry_secret.metadata.0.name
+
+  providers = {
+    kubernetes.gcp = kubernetes
+  }
 }
 
-module "chall_pwn_correct_horse_battery_staple" {
-  source = "./modules/challs/pwn/"
-  count = var.dctfsi_challs_enabled ? 1 : 0
+module "dctf_chall_pwn_snailtime" {
+  source = "./modules/challs/gcp/pwn_root/"
 
-  name = "correct-horse-battery-staple"
+  name = "snailtime"
   ip   = azurerm_public_ip.challs_pwn.ip_address
   port = 13374
 
   k8s_namespace       = "default"
-  k8s_image           = "dctfsi.azurecr.io/challs/correct-horse-battery-staple:latest"
-  k8s_registry_secret = kubernetes_secret.registry_secret.metadata.0.name
+  k8s_image           = "dctfint.azurecr.io/challs/snailtime:latest"
+  k8s_registry_secret = kubernetes_secret.dctf_registry_secret.metadata.0.name
+
+  providers = {
+    kubernetes.gcp = kubernetes
+  }
 }
 
-module "chall_pwn_padawan" {
-  source = "./modules/challs/pwn/"
-  count = var.dctfsi_challs_enabled ? 1 : 0
+module "dctf_chall_pwn_vmstation" {
+  source = "./modules/challs/gcp/pwn/"
 
-  name = "padawan"
+  name = "vmstation"
   ip   = azurerm_public_ip.challs_pwn.ip_address
   port = 13375
 
   k8s_namespace       = "default"
-  k8s_image           = "dctfsi.azurecr.io/challs/padawan:latest"
-  k8s_registry_secret = kubernetes_secret.registry_secret.metadata.0.name
+  k8s_image           = "dctfint.azurecr.io/challs/vmstation:latest"
+  k8s_registry_secret = kubernetes_secret.dctf_registry_secret.metadata.0.name
+
+  providers = {
+    kubernetes.gcp = kubernetes
+  }
+}
+
+module "dctf_chall_pwn_maze" {
+  source = "./modules/challs/gcp/pwn/"
+
+  name = "maze"
+  ip   = azurerm_public_ip.challs_pwn.ip_address
+  port = 13376
+
+  k8s_namespace       = "default"
+  k8s_image           = "dctfint.azurecr.io/challs/maze:latest"
+  k8s_registry_secret = kubernetes_secret.dctf_registry_secret.metadata.0.name
+
+  providers = {
+    kubernetes.gcp = kubernetes
+  }
+}
+
+module "dctf_chall_pwn_dragons_lair" {
+  source = "./modules/challs/gcp/pwn_root/"
+
+  name = "dragons-lair"
+  ip   = azurerm_public_ip.challs_pwn.ip_address
+  port = 13377
+
+  k8s_namespace       = "default"
+  k8s_image           = "dctfint.azurecr.io/challs/dragons-lair:latest"
+  k8s_registry_secret = kubernetes_secret.dctf_registry_secret.metadata.0.name
+
+  providers = {
+    kubernetes.gcp = kubernetes
+  }
+}
+
+module "dctf_chall_pwn_correcthorsebatterystaple" {
+  source = "./modules/challs/gcp/pwn/"
+
+  name = "correcthorsebatterystaple"
+  ip   = azurerm_public_ip.challs_pwn.ip_address
+  port = 13378
+
+  k8s_namespace       = "default"
+  k8s_image           = "dctfint.azurecr.io/challs/correcthorsebatterystaple:latest"
+  k8s_registry_secret = kubernetes_secret.dctf_registry_secret.metadata.0.name
+
+  providers = {
+    kubernetes.gcp = kubernetes
+  }
+}
+
+module "dctf_chall_pwn_safespace" {
+  source = "./modules/challs/gcp/pwn_root/"
+
+  name = "safespace"
+  ip   = azurerm_public_ip.challs_pwn.ip_address
+  port = 13379
+
+  k8s_namespace       = "default"
+  k8s_image           = "dctfint.azurecr.io/challs/safespace:latest"
+  k8s_registry_secret = kubernetes_secret.dctf_registry_secret.metadata.0.name
+
+  providers = {
+    kubernetes.gcp = kubernetes
+  }
+}
+
+module "dctf_chall_pwn_phonebook" {
+  source = "./modules/challs/gcp/pwn/"
+
+  name = "phonebook"
+  ip   = azurerm_public_ip.challs_pwn.ip_address
+  port = 13380
+
+  k8s_namespace       = "default"
+  k8s_image           = "dctfint.azurecr.io/challs/phonebook:latest"
+  k8s_registry_secret = kubernetes_secret.dctf_registry_secret.metadata.0.name
+
+  providers = {
+    kubernetes.gcp = kubernetes
+  }
+}
+
+module "dctf_chall_pwn_shitty_tpm" {
+  source = "./modules/challs/gcp/pwn/"
+
+  name = "shitty-tpm"
+  ip   = azurerm_public_ip.challs_pwn.ip_address
+  port = 13381
+
+  k8s_namespace       = "default"
+  k8s_image           = "dctfint.azurecr.io/challs/shitty-tpm:latest"
+  k8s_registry_secret = kubernetes_secret.dctf_registry_secret.metadata.0.name
+
+  providers = {
+    kubernetes.gcp = kubernetes
+  }
+}
+
+module "dctf_chall_pwn_secure_kernel" {
+  source = "./modules/challs/gcp/pwn/"
+
+  name = "secure-kernel"
+  ip   = azurerm_public_ip.challs_pwn.ip_address
+  port = 13382
+
+  k8s_namespace       = "default"
+  k8s_image           = "dctfint.azurecr.io/challs/secure-kernel:latest"
+  k8s_registry_secret = kubernetes_secret.dctf_registry_secret.metadata.0.name
+
+  providers = {
+    kubernetes.gcp = kubernetes
+  }
+}
+
+module "dctf_chall_pwn_algebraic" {
+  source = "./modules/challs/gcp/pwn/"
+
+  name = "algebraic"
+  ip   = azurerm_public_ip.challs_pwn.ip_address
+  port = 13383
+
+  k8s_namespace       = "default"
+  k8s_image           = "dctfint.azurecr.io/challs/algebraic:latest"
+  k8s_registry_secret = kubernetes_secret.dctf_registry_secret.metadata.0.name
+
+  providers = {
+    kubernetes.gcp = kubernetes
+  }
 }

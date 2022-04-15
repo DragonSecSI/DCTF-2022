@@ -1,6 +1,6 @@
 resource "kubernetes_service" "service" {
   metadata {
-    name = "redis-${var.name}-service"
+    name = "pwn-${var.name}-service"
     namespace = var.k8s_namespace
   }
   spec {
@@ -9,20 +9,23 @@ resource "kubernetes_service" "service" {
     }
 
     port {
-      port        = 6379
-      target_port = 6379
+      port        = var.port
+      target_port = 1337
     }
 
-    type = "ClusterIP"
+    type = "LoadBalancer"
+    load_balancer_ip = var.ip
   }
+
+  provider = kubernetes.gcp
 }
 
 resource "kubernetes_deployment" "deployment" {
   metadata {
-    name = "redis-${var.name}-deployment"
+    name = "pwn-${var.name}-deployment"
     namespace = var.k8s_namespace
     labels = {
-      app = "redis-${var.name}"
+      app = "${var.name}"
     }
   }
 
@@ -31,34 +34,40 @@ resource "kubernetes_deployment" "deployment" {
 
     selector {
       match_labels = {
-        app = "redis-${var.name}"
+        app = "${var.name}"
       }
     }
 
     template {
       metadata {
         labels = {
-          app = "redis-${var.name}"
+          app = "${var.name}"
         }
       }
 
       spec {
         container {
           image = "${var.k8s_image}"
-          name  = "redis-${var.name}"
+          name  = "${var.name}"
 
           resources {
             limits = {
-              cpu    = "2"
-              memory = "4Gi"
+              cpu    = "0.3"
+              memory = "512Mi"
             }
             requests = {
-              cpu    = "1.5"
-              memory = "3Gi"
+              cpu    = "0.1"
+              memory = "128Mi"
             }
           }
+        }
+
+        image_pull_secrets {
+          name = var.k8s_registry_secret
         }
       }
     }
   }
+
+  provider = kubernetes.gcp
 }

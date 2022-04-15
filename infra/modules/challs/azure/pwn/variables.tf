@@ -29,7 +29,7 @@ variable "k8s_image" {
 }
 
 variable "k8s_registry_secret" {
-  description = "Kubernetes "
+  description = "Kubernetes registry secret"
   type = string
   nullable = false
   sensitive = true
