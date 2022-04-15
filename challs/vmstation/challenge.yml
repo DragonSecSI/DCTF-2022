@@ -15,7 +15,7 @@ files:
   - "chall/vmstation"
   - "chall/wrapper.py"
 flags:
-  - "DCTF{L18c_GO7_15_4_N3W_fR33_hook}"
+  - "dctf{L18c_GO7_15_4_N3W_fR33_hook}"
 tags:
   - "pwn"
 
