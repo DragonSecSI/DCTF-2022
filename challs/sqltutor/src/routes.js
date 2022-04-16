@@ -138,7 +138,7 @@ router.post("/execute", (req, res) => {
   ]);
   const sqlQuery = formatString(selectedQuery.query, [textAscii]);
   console.log("SQL Query: " + sqlQuery);
-  connection.execute(sqlQuery, (err, results) => {
+  return connection.execute(sqlQuery, (err, results) => {
     if (err) {
       return res.json({
         status: "error",

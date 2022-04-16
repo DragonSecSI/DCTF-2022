@@ -20,10 +20,13 @@ app.use("/", routes);
 app.use("/public", express.static(path.join(__dirname, "..", "public")));
 
 app.use((req, res, next) => {
+  console.log("Sending 404");
+  console.error(req.body);
   return res.status(404).render("error", { title: "Not Found" });
 });
 
 app.use((err, req, res, next) => {
+  console.log("Sending error");
   console.log(err);
   return res.render("error");
 });
