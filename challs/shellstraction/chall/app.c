@@ -42,6 +42,13 @@ void process(int s) {
     }
 }
 
+// IO setup
+void setup() {
+    setvbuf(stdin, 0, _IONBF, 0);
+    setvbuf(stdout, 0, _IONBF, 0);
+    setvbuf(stderr, 0, _IONBF, 0);
+}
+
 // stores pointers to the first characters of tokens/multitokens (tokens wrapped in quotation marks) in the global tokens array
 // this function does not check for tokens array bounderies
 void tokenize(char* line) {
@@ -160,7 +167,6 @@ void eton() {
         }
 
         puts("Creating a note...");
-        sleep(1);
         notes_arr[index] = (char*) malloc(size);
         if (notes_arr[index] != NULL) {
             strncpy(notes_arr[index], tokens[4], strlen(tokens[4]));        // this copies input token on heap, without the nullbyte
@@ -189,7 +195,6 @@ void eton() {
             return;
         }
 
-        sleep(1);
         free(notes_arr[index]);
         puts("Notes removed.");
     }
@@ -371,6 +376,8 @@ void touch() {
 }
 
 int main(int argc, char **argv) {
+    setup();
+
 	signal(SIGCHLD, process);
 
     sh_name = (char*) malloc(100);
@@ -398,7 +405,7 @@ int main(int argc, char **argv) {
         printf("%s@%s:%s$ ", user, host, path);
 
 	    int out = getline(&line, &size, stdin);         // stores pointer to buffer to *lineptr and updates *n with buffer size, returns number of chars read
-	    if (out == -1) {                                // failure or EOF
+        if (out == -1) {                                // failure or EOF
             break;
 	    }
 	    tokenize(line);
