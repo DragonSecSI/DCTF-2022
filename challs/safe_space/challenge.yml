@@ -18,6 +18,6 @@ tags:
   - python
   - misc
 
-state: hidden
+state: visible
 
 version: "0.1"

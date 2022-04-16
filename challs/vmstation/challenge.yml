@@ -20,7 +20,7 @@ flags:
 tags:
   - "pwn"
 
-state: "hidden"
+state: "visible"
 version: "0.1"
 
 ops:
