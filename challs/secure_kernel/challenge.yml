@@ -12,6 +12,7 @@ type: "standard"
 
 files:
   - "chall/challenge.tar.gz"
+  - "chall/source.tar.gz"
 flags:
   - "dctf{R4c3c0nd1t1ons_4r3_fun}"
 tags:
