@@ -37,6 +37,8 @@ module "dctf_chall_pwn_macdonalds_1" {
   ip   = azurerm_public_ip.challs_pwn.ip_address
   port = 13372
 
+  replicas = 3
+
   k8s_namespace       = "default"
   k8s_image           = "dctfint.azurecr.io/challs/macdonalds-1:latest"
   k8s_registry_secret = kubernetes_secret.dctf_registry_secret.metadata.0.name
@@ -52,6 +54,8 @@ module "dctf_chall_pwn_macdonalds_2" {
   name = "macdonalds-2"
   ip   = azurerm_public_ip.challs_pwn.ip_address
   port = 13373
+
+  replicas = 3
 
   k8s_namespace       = "default"
   k8s_image           = "dctfint.azurecr.io/challs/macdonalds-2:latest"

@@ -16,6 +16,12 @@ variable "port" {
   nullable = false
 }
 
+variable "replicas" {
+  description = "Number of replicas"
+  type = number
+  default = 1
+}
+
 variable "k8s_namespace" {
   description = "Kubernetes namespace"
   type = string
