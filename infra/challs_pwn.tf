@@ -31,13 +31,13 @@ module "dctf_chall_pwn_key_recovery" {
 }
 
 module "dctf_chall_pwn_macdonalds_1" {
-  source = "./modules/challs/gcp/pwn_mem/"
+  source = "./modules/challs/gcp/pwn/"
 
   name = "macdonalds-1"
   ip   = azurerm_public_ip.challs_pwn.ip_address
   port = 13372
 
-  replicas = 3
+  replicas = 25
 
   k8s_namespace       = "default"
   k8s_image           = "dctfint.azurecr.io/challs/macdonalds-1:latest"
@@ -49,13 +49,13 @@ module "dctf_chall_pwn_macdonalds_1" {
 }
 
 module "dctf_chall_pwn_macdonalds_2" {
-  source = "./modules/challs/gcp/pwn_mem/"
+  source = "./modules/challs/gcp/pwn/"
 
   name = "macdonalds-2"
   ip   = azurerm_public_ip.challs_pwn.ip_address
   port = 13373
 
-  replicas = 3
+  replicas = 25
 
   k8s_namespace       = "default"
   k8s_image           = "dctfint.azurecr.io/challs/macdonalds-2:latest"
