@@ -37,7 +37,7 @@ module "dctf_chall_pwn_macdonalds_1" {
   ip   = azurerm_public_ip.challs_pwn.ip_address
   port = 13372
 
-  replicas = 25
+  replicas = 5
 
   k8s_namespace       = "default"
   k8s_image           = "dctfint.azurecr.io/challs/macdonalds-1:latest"
@@ -55,7 +55,7 @@ module "dctf_chall_pwn_macdonalds_2" {
   ip   = azurerm_public_ip.challs_pwn.ip_address
   port = 13373
 
-  replicas = 25
+  replicas = 5
 
   k8s_namespace       = "default"
   k8s_image           = "dctfint.azurecr.io/challs/macdonalds-2:latest"
